@@ -1,0 +1,45 @@
+
+
+[data-tab-content] {
+    display: none;
+}
+
+.active[data-tab-content] {
+    display: block;
+}
+
+
+body{
+    background-color: black;
+    color: white;
+}
+
+footer{
+    text-align: center;
+    padding: 3px;
+    background-color: black;
+    color: gray;
+}
+
+
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid white;
+}
+
+.tab {
+    cursor: pointer;
+    padding: 10px;
+}
+
+.tab.active {
+    background-color: grey;
+}
+
+.tab:hover {
+    background-color: darkgray;
+}

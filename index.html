@@ -3,22 +3,16 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=10">
-    <meta name="description" content="Tyler Michael Kormann's website">
+    <meta name="description" content="Tyler Michael Kormann's website, you should check it out :]">
+    <script src="script.js" defer></script>
+    <link href="styles.css" rel="stylesheet">
     <title>Tyler :]</title>
+    
+  </head>
+  <body>
     <style>
-      body{
-        background-color: black;
-        color: white;
-      }
 
-      footer{
-        text-align: center;
-        padding: 3px;
-        background-color: black;
-        color: gray;
-      }
-
-      em{
+      i{
         font-weight: bold;
       }
 
@@ -29,21 +23,58 @@
         margin-right: 16px;
       }
 
-      .username {
-        font-weight: bold;
-      }
     </style>
-  </head>
-  <body>
-    <img src="images/canvas.png" alt="Autistic Robot Face" />
-    <a href="https://namemc.com/profile/TheAwtisticRobot.1" class="username">TheAwtisticRobot</a>
-    <p style="margin-bottom: 90px;">Hi I am A robot</p>
-    <img src="images/pixilart-drawing.png" alt="Neymore">
-    <p>Morgen Riddle</p>
-    <p><em>Defenitly not</em> voldemort.</p>
-    <footer>
-      <p>Made By: Tyler Michael Kormann</p>
-      <p>Hosted on <a href="https://github.com/AutisticRobot/AutisticRobot.github.io">Github Pages</a></p>
-    </footer>
+
+    <!--alwas visible-->
+    <div>
+
+      <!--Tab setup-->
+      <ul class="tabs">
+       <li data-tab-target="#home" class="active tab">Home</li>
+       <li data-tab-target="#friends" class="tab">My Friends</li>
+       <li data-tab-target="#games" class="tab">Games</li>
+      </ul>
+
+      <!--simple footer-->
+      <footer>
+        <p>Made By: Tyler Michael Kormann</p>
+        <p>Hosted on <a href="https://github.com/AutisticRobot/AutisticRobot.github.io">Github Pages</a></p>
+      </footer>
+    </div>
+
+
+    <div class="tab-content">
+
+      <!--Home Tab-->
+      <div id="home" data-tab-content class="active">
+        <h1>Home</h1>
+      </div>
+
+      <!--Friends tab-->
+      <div id="friends" data-tab-content>
+        <h1>My friends</h1>
+
+        <!--My(tyler) profile-->
+        <img src="images/canvas.png" alt="Autistic Robot Face" />
+        <a href="https://namemc.com/profile/TheAwtisticRobot.1" style="font-weight: bold;">TheAwtisticRobot</a>
+        <p style="margin-bottom: 90px;">Hi I am A robot</p>
+
+        <!--Morgan Profile-->
+        <img src="images/pixilart-drawing.png" alt="Neymore">
+        <p>Morgan Riddle</p>
+        <p><i>Defenitly</i> not voldemort.</p>
+
+        
+        <!--End of friends :[-->
+      </div>
+      
+      <!--Games tab-->
+      <div id="games" data-tab-content>
+        <h1>Games</h1>
+        <p>maybe games comeing soon...</p>
+      </div>
+
+
+    </div>
   </body>
 </html>
