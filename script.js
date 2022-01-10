@@ -15,9 +15,5 @@ tabs.forEach(tab => {
         
         tab.classList.add('active')
         target.classList.add('active')
-        
-        //footer update
-        footer.classList.remove('active')
-        footer.classList.add('active')
     })
 })
