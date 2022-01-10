@@ -15,6 +15,10 @@ body{
 }
 
 footer{
+    display: none;
+}
+
+footer{
     display: block;
     text-align: center;
     padding: 3px;
