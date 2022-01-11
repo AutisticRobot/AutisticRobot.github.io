@@ -21,10 +21,10 @@ footer{
     background-color: #303030;
     color: gray;
     position: static;
-    box-shadow: inset 0 -5px 0 0 #303030;
+    box-shadow: 0px 10px 10px rgb(22, 22, 22) inset;
 }
 
-
+/*tabs system*/
 .tabs {
     display: flex;
     justify-content: space-around;
@@ -47,4 +47,9 @@ footer{
 
 .tab:hover {
     background-color: darkgray;
+}
+
+/*image change*/
+img.pixel{
+    image-rendering: pixelated;
 }
