@@ -1,5 +1,5 @@
 /*this is for putting text files in multipule html pages*/
 function test(){
-    var text = "Hello World!";
-    document.getElementById("test").innerHTML = "test_text.txt";
+    var text = "test_text.txt";
+    document.getElementById("test").innerHTML = text;
 }
