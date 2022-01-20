@@ -5,5 +5,5 @@ fs.readFile("test_text.txt", function(text){
 });
 function fTest(){
     var text = "test_text";
-    document.getElementById("test").innerHTML += test;
+    document.getElementById("test").innerHTML += text;
 };
