@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tyler Michael Kormann's website, you should check it out :]">
+  <link href="/styles.css" rel="stylesheet">
+  <link href="/images/newFace.png" rel="icon">
+  <title>Games</title>
+</head>
+<body>
+  <h2><a href="/index.html">Home</a></h2>
+  <h1>The Game Page T-1</h1>
+  <div>
+
+    <style>
+      canvas{
+        background: dimgrey;
+      }
+    </style>
+
+    <canvas id="ctx" tabindex=0 width=900 height=500 style="border: 1px solid grey;" onkeypress="movePlayer(event)" onkeyup="keyUp(event)"></canvas>
+
+    <script>
+      var WIDTH = 900;
+      var HEIGHT = 500;
+
+      var canvas = document.getElementById("ctx");
+      var ctx = canvas.getContext("2d");
+      canvas.focus();
+      canvas.addEventListener("keydown", movePlayer);
+
+      //player vars
+      var xPos = 50;
+      var yPos = 50;
+
+      var keys = {
+        up: false,
+        right: false,
+        left: false,
+        down: false
+      }
+
+      //movements
+      var isJumping = false;
+      var speed = 10;
+      
+      function movePlayer(event){
+        switch(event.keyCode){
+          case 39:
+            keys["right"] = true;
+            break;
+          case 38:
+            isJumping = true;
+            keys["up"] = true;
+            break;
+          case 40:
+            keys["down"] = true;
+            break;
+          case 37:
+            keys["left"] = true;
+            break;
+        }
+      }
+
+      function keyUp(event){
+        switch(event.keyCode){
+          case 39:
+            keys["right"] = false;
+            break;
+          case 38:
+            isJumping = false;
+            keys["up"] = false;
+            break;
+          case 40:
+          keys["down"] = false;
+            break;
+          case 37:
+            keys["left"] = false;
+            break;
+        }
+      }
+
+      // game loop
+      function update(){
+        window.requestAnimationFrame(update);
+        ctx.clearRect(0, 0, WIDTH, HEIGHT);
+
+        // player
+        ctx.fillStyle = "black";
+        ctx.beginPath();
+        ctx.fillRect(xPos, yPos, 50, 50);
+
+        //ground
+        ctx.fillStyle = "green";
+        ctx.beginPath();
+        ctx.fillRect(0, 490, WIDTH, 10);
+
+        //movement
+        if(keys["up"]){
+          yPos -= speed;
+        }
+        if(keys["down"]){
+          yPos += speed;
+        }
+        if(keys["right"]){
+          xPos += speed;
+        }
+        if(keys["left"]){
+          xPos -= speed;
+        }
+
+        if(keys["down"]){
+        ctx.fillStyle = "black";
+        ctx.beginPath();
+        ctx.fillRect(10, 30, 50, 50);
+        }
+      }
+
+      window.requestAnimationFrame(update);
+    </script>
+  </div>
+  <footer>
+    <div>
+      <p>Made By: Tyler Michael Kormann</p>
+      <p>Hosted on <a href="https://github.com/AutisticRobot/AutisticRobot.github.io">Github Pages</a></p>
+    </div>
+  </footer>
+</body>
+</html>
