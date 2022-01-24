@@ -32,8 +32,10 @@
       canvas.addEventListener("keydown", movePlayer);
 
       //player vars
-      var xPos = 50;
-      var yPos = 50;
+      var player = {
+        xPos: 50,
+        yPos: 50
+      }
 
       var keys = {
         up: false,
@@ -90,7 +92,7 @@
         // player
         ctx.fillStyle = "black";
         ctx.beginPath();
-        ctx.fillRect(xPos, yPos, 50, 50);
+        ctx.fillRect(player.xPos, player.yPos, 50, 50);
 
         //ground
         ctx.fillStyle = "green";
@@ -99,16 +101,16 @@
 
         //movement
         if(keys["up"]){
-          yPos -= speed;
+          player.yPos -= speed;
         }
         if(keys["down"]){
-          yPos += speed;
+          player.yPos += speed;
         }
         if(keys["right"]){
-          xPos += speed;
+          player.xPos += speed;
         }
         if(keys["left"]){
-          xPos -= speed;
+          player.xPos -= speed;
         }
 
         if(keys["down"]){
