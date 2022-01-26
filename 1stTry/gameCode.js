@@ -83,7 +83,7 @@ function update() {
   ctx.beginPath();
   ctx.fillRect(player.xPos, player.yPos, player.size, player.size);
 
-  player.yNeg = player.yPos + player.size;
+  player.xNeg = player.xPos + player.size;
   player.yNeg = player.yPos + player.size;
   player.xMid = player.xPos + player.size / 2;
   player.yMid = player.yPos + player.size / 2;
@@ -119,16 +119,22 @@ function update() {
   }
 
   //square
-  square1.yNeg = square1.yPos + square1.size;
+  square1.xNeg = square1.xPos + square1.size;
   square1.yNeg = square1.yPos + square1.size;
   square1.xMid = square1.xPos + square1.size / 2;
   square1.yMid = square1.yPos + square1.size / 2;
   ctx.fillStyle = "red";
   ctx.beginPath();
   ctx.fillRect(square1.xPos, square1.yPos, square1.size, square1.size);
-  if(player.yNeg > square1.yPos || player.xNeg > square1.xPos){
+  if(player.yNeg >= square1.yPos){
+    if(player.xNeg >= square1.xPos){
+      if(player.yPos <= square1.yNeg){
+        if(player.xPos <= square1.xNeg){
     player.xPos = 50;
     player.yPos = 50;
+        }
+      }
+  }
   }
 }
 
