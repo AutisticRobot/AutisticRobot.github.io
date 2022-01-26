@@ -128,8 +128,12 @@ function update() {
   ctx.fillRect(square1.xPos, square1.yPos, square1.size, square1.size);
   if(player.yNeg >= square1.yPos){
     if(player.xNeg >= square1.xPos){
+      if(player.yPos <= square1.yNeg){
+        if(player.xPos <= square1.xNeg){
     player.xPos = 50;
     player.yPos = 50;
+        }
+      }
   }
   }
 }
