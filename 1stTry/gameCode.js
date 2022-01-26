@@ -8,8 +8,11 @@ var WIDTH = 900;
 
       //player vars
       var player = {
+        size: 50,
         xPos: 50,
-        yPos: 50
+        yPos: 50,
+        XMid: this.xPos + this.size / 2,
+        yMid: this.yPos + this.size / 2
       }
 
       var keys = {
@@ -93,6 +96,10 @@ var WIDTH = 900;
         ctx.beginPath();
         ctx.fillRect(10, 30, 50, 50);
         }
+            
+        //Collisions
+            //looping walls
+            if(
       }
 
       window.requestAnimationFrame(update);
