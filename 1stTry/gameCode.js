@@ -1,105 +1,135 @@
-var WIDTH = 900;
-      var HEIGHT = 500;
+var width = 900;
+var height = 500;
 
-      var canvas = document.getElementById("ctx");
-      var ctx = canvas.getContext("2d");
-      canvas.focus();
-      canvas.addEventListener("keydown", movePlayer);
+var canvas = document.getElementById("ctx");
+var ctx = canvas.getContext("2d");
+canvas.focus();
+canvas.addEventListener("keydown", movePlayer);
 
-      //player vars
-      var player = {
-        size: 50,
-        xPos: 50,
-        yPos: 50,
-        XMid: this.xPos + this.size / 2,
-        yMid: this.yPos + this.size / 2
-      }
+//player vars
+var player = {
+  size: 50,
+  xPos: 50,
+  yPos: 50,
+  xNeg: this.xPos + this.size,
+  yNeg: this.yPos + this.size,
+  xMid: this.xPos + this.size / 2,
+  yMid: this.yPos + this.size / 2,
+  speed: 5,
+};
 
-      var keys = {
-        up: false,
-        right: false,
-        left: false,
-        down: false
-      }
+//square1
+var square1 = {
+  size: 60,
+  xPos: 300,
+  xNeg: this.size + this.xPos,
+  yPos: 300,
+  yNeg: this.size + this.yPos,
+  xMid: this.xPos + this.size / 2,
+  yMid: this.yPos + this.size / 2,
+}
 
-      //movements
-      var isJumping = false;
-      var speed = 10;
-      
-      function movePlayer(event){
-        switch(event.keyCode){
-          case 39:
-            keys["right"] = true;
-            break;
-          case 38:
-            isJumping = true;
-            keys["up"] = true;
-            break;
-          case 40:
-            keys["down"] = true;
-            break;
-          case 37:
-            keys["left"] = true;
-            break;
-        }
-      }
+var keys = {
+  up: false,
+  right: false,
+  left: false,
+  down: false,
+};
 
-      function keyUp(event){
-        switch(event.keyCode){
-          case 39:
-            keys["right"] = false;
-            break;
-          case 38:
-            isJumping = false;
-            keys["up"] = false;
-            break;
-          case 40:
-          keys["down"] = false;
-            break;
-          case 37:
-            keys["left"] = false;
-            break;
-        }
-      }
+//movements
 
-      // game loop
-      function update(){
-        window.requestAnimationFrame(update);
-        ctx.clearRect(0, 0, WIDTH, HEIGHT);
+function movePlayer(event) {
+  switch (event.keyCode) {
+    case 39:
+      keys["right"] = true;
+      break;
+    case 38:
+      keys["up"] = true;
+      break;
+    case 40:
+      keys["down"] = true;
+      break;
+    case 37:
+      keys["left"] = true;
+      break;
+  }
+}
 
-        // player
-        ctx.fillStyle = "black";
-        ctx.beginPath();
-        ctx.fillRect(player.xPos, player.yPos, 50, 50);
+function keyUp(event) {
+  switch (event.keyCode) {
+    case 39:
+      keys["right"] = false;
+      break;
+    case 38:
+      keys["up"] = false;
+      break;
+    case 40:
+      keys["down"] = false;
+      break;
+    case 37:
+      keys["left"] = false;
+      break;
+  }
+}
 
-        //ground
-        ctx.fillStyle = "green";
-        ctx.beginPath();
-        ctx.fillRect(0, 490, WIDTH, 10);
+// game loop
+function update() {
 
-        //movement
-        if(keys["up"]){
-          player.yPos -= speed;
-        }
-        if(keys["down"]){
-          player.yPos += speed;
-        }
-        if(keys["right"]){
-          player.xPos += speed;
-        }
-        if(keys["left"]){
-          player.xPos -= speed;
-        }
+  window.requestAnimationFrame(update);
+  ctx.clearRect(0, 0, width, height);
 
-        if(keys["down"]){
-        ctx.fillStyle = "black";
-        ctx.beginPath();
-        ctx.fillRect(10, 30, 50, 50);
-        }
-            
-        //Collisions
-            //looping walls
-            if(
-      }
+  // player
+  ctx.fillStyle = "black";
+  ctx.beginPath();
+  ctx.fillRect(player.xPos, player.yPos, player.size, player.size);
 
-      window.requestAnimationFrame(update);
+  player.yNeg = player.yPos + player.size;
+  player.yNeg = player.yPos + player.size;
+  player.xMid = player.xPos + player.size / 2;
+  player.yMid = player.yPos + player.size / 2;
+
+  //movement
+  if (keys["up"]) {
+    player.yPos -= player.speed;
+  }
+  if (keys["down"]) {
+    player.yPos += player.speed;
+  }
+  if (keys["right"]) {
+    player.xPos += player.speed;
+  }
+  if (keys["left"]) {
+    player.xPos -= player.speed;
+  }
+
+  //Collisions
+
+  //looping walls
+  if (player.xPos > width) {
+    player.xPos = -50;
+  }
+  if (player.xPos < -50) {
+    player.xPos = width;
+  }
+  if (player.yPos > height) {
+    player.yPos = -50;
+  }
+  if (player.yPos < -50) {
+    player.yPos = height;
+  }
+
+  //square
+  square1.yNeg = square1.yPos + square1.size;
+  square1.yNeg = square1.yPos + square1.size;
+  square1.xMid = square1.xPos + square1.size / 2;
+  square1.yMid = square1.yPos + square1.size / 2;
+  ctx.fillStyle = "red";
+  ctx.beginPath();
+  ctx.fillRect(square1.xPos, square1.yPos, square1.size, square1.size);
+  if(player.yNeg > square1.yPos || player.xNeg > square1.xPos){
+    player.xPos = 50;
+    player.yPos = 50;
+  }
+}
+
+window.requestAnimationFrame(update);
