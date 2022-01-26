@@ -126,7 +126,7 @@ function update() {
   ctx.fillStyle = "red";
   ctx.beginPath();
   ctx.fillRect(square1.xPos, square1.yPos, square1.size, square1.size);
-  if(player.yNeg > square1.yPos || player.xNeg > square1.xPos){
+  if(player.yNeg > square1.yPos && player.xNeg > square1.xPos){
     player.xPos = 50;
     player.yPos = 50;
   }
