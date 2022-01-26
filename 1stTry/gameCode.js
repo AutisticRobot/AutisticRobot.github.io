@@ -119,7 +119,7 @@ function update() {
   }
 
   //square
-  square1.yNeg = square1.yPos + square1.size;
+  square1.xNeg = square1.xPos + square1.size;
   square1.yNeg = square1.yPos + square1.size;
   square1.xMid = square1.xPos + square1.size / 2;
   square1.yMid = square1.yPos + square1.size / 2;
