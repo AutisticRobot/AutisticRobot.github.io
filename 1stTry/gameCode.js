@@ -83,7 +83,7 @@ function update() {
   ctx.beginPath();
   ctx.fillRect(player.xPos, player.yPos, player.size, player.size);
 
-  player.yNeg = player.yPos + player.size;
+  player.xNeg = player.xPos + player.size;
   player.yNeg = player.yPos + player.size;
   player.xMid = player.xPos + player.size / 2;
   player.yMid = player.yPos + player.size / 2;
