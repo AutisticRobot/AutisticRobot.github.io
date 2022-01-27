@@ -1,5 +1,7 @@
 var width = 900;
 var height = 500;
+var i = 1;
+var arr1 = [1];
 
 var canvas = document.getElementById("ctx");
 var ctx = canvas.getContext("2d");
@@ -18,17 +20,31 @@ var player = {
   speed: 5,
 };
 
-//square1
-var square1 = {
-  size: 60,
-  xPos: 300,
-  xNeg: this.size + this.xPos,
-  yPos: 300,
-  yNeg: this.size + this.yPos,
-  xMid: this.xPos + this.size / 2,
-  yMid: this.yPos + this.size / 2,
-}
+//square
+function deathSquare(xPos, yPos, xSize, ySize){
+  var xNeg;
+  var yNeg;
+  var xMid;
+  var yMid;
 
+  xNeg = xPos + xSize;
+  yNeg = yPos + ySize;
+  xMid = xPos + xSize / 2;
+  yMid = yPos + ySize / 2;
+  ctx.fillStyle = "red";
+  ctx.beginPath();
+  ctx.fillRect(xPos, yPos, xSize, ySize);
+  if(player.yNeg >= yPos){
+    if(player.xNeg >= xPos){
+      if(player.yPos <= yNeg){
+        if(player.xPos <= xNeg){
+          player.xPos = 50;
+          player.yPos = 50;
+        }
+      }
+    }
+  }
+}
 var keys = {
   up: false,
   right: false,
@@ -72,11 +88,22 @@ function keyUp(event) {
   }
 }
 
-// game loop
+// game loop----------------------------------------------------------------------------------------------------------------------------------------------
 function update() {
+  for (var t=0; t < arr1.length; t++){
+    arr1[t] += 5;
+  }
+  if (i === 20){
+    arr1.push(0)
+    i = 0;
+  }
+  i++
+  
+
 
   window.requestAnimationFrame(update);
   ctx.clearRect(0, 0, width, height);
+
 
   // player
   ctx.fillStyle = "black";
@@ -118,23 +145,8 @@ function update() {
     player.yPos = height;
   }
 
-  //square
-  square1.xNeg = square1.xPos + square1.size;
-  square1.yNeg = square1.yPos + square1.size;
-  square1.xMid = square1.xPos + square1.size / 2;
-  square1.yMid = square1.yPos + square1.size / 2;
-  ctx.fillStyle = "red";
-  ctx.beginPath();
-  ctx.fillRect(square1.xPos, square1.yPos, square1.size, square1.size);
-  if(player.yNeg >= square1.yPos){
-    if(player.xNeg >= square1.xPos){
-      if(player.yPos <= square1.yNeg){
-        if(player.xPos <= square1.xNeg){
-    player.xPos = 50;
-    player.yPos = 50;
-        }
-      }
-  }
+  for (var t=0; t < arr1.length; t++){
+    deathSquare(300, arr1[t], 60, 60);
   }
 }
 
