@@ -36,15 +36,9 @@ function deathSquare(xPos, yPos, xSize, ySize){
   ctx.fillStyle = "red";
   ctx.beginPath();
   ctx.fillRect(xPos, yPos, xSize, ySize);
-  if(player.yNeg >= yPos){
-    if(player.xNeg >= xPos){
-      if(player.yPos <= yNeg){
-        if(player.xPos <= xNeg){
-          player.xPos = 50;
-          player.yPos = 50;
-        }
-      }
-    }
+  if(player.yNeg >= yPos && player.xNeg >= xPos && player.yPos <= yNeg && player.xPos <= xNeg){
+    player.xPos = 50;
+    player.yPos = 50;
   }
 }
 var keys = {
