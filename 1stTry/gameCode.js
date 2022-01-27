@@ -151,8 +151,8 @@ function update() {
   }
   
   ctx.fillStyle = 'green';
-  ctx.font = '20px san-serif';
-  ctx.fillText('score', 10, 10);
+  ctx.font = '30px comic-sans';
+  ctx.fillText('score:' + score, 10, 10);
 }
 
 window.requestAnimationFrame(update);
