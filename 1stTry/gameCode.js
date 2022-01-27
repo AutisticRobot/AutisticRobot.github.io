@@ -16,13 +16,12 @@ canvas.addEventListener("keydown", movePlayer);
 
 //player vars
 var player = {
-  size: 50,
+  xSize: 50,
+  ySize: 50,
   xPos: 50,
   yPos: 50,
-  xNeg: this.xPos + this.size,
-  yNeg: this.yPos + this.size,
-  xMid: this.xPos + this.size / 2,
-  yMid: this.yPos + this.size / 2,
+  xNeg: this.xPos + this.xSize,
+  yNeg: this.yPos + this.ySize,
   speed: 5,
 };
 
@@ -30,13 +29,9 @@ var player = {
 function deathSquare(xPos, yPos, xSize, ySize){
   var xNeg;
   var yNeg;
-  var xMid;
-  var yMid;
 
   xNeg = xPos + xSize;
   yNeg = yPos + ySize;
-  xMid = xPos + xSize / 2;
-  yMid = yPos + ySize / 2;
   ctx.fillStyle = "red";
   ctx.beginPath();
   ctx.fillRect(xPos, yPos, xSize, ySize);
@@ -125,8 +120,6 @@ function update() {
 
   player.xNeg = player.xPos + player.size;
   player.yNeg = player.yPos + player.size;
-  player.xMid = player.xPos + player.size / 2;
-  player.yMid = player.yPos + player.size / 2;
 
   //movement
   if (keys["up"]) {
