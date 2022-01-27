@@ -1,6 +1,7 @@
 var width = 900;
 var height = 500;
 var i = 1;
+var score = 420
 var array = {
   tag: [],
   x:[],
@@ -154,6 +155,10 @@ function update() {
   for (var t=0; t < array.tag.length; t++){
     deathSquare(array.x[t], array.y[t], array.sizeX[t], array.sizeY[t]);
   }
+  
+  ctx.fillStyle = 'green';
+  ctx.font = '20px comic-sans';
+  ctx.fillText(score, 0, 0, 100);
 }
 
 window.requestAnimationFrame(update);
