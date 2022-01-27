@@ -1,0 +1,2 @@
+walls
+comprehensive death shape array
