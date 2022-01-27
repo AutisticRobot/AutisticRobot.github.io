@@ -117,10 +117,10 @@ function update() {
   // player
   ctx.fillStyle = "black";
   ctx.beginPath();
-  ctx.fillRect(player.xPos, player.yPos, player.size, player.size);
+  ctx.fillRect(player.xPos, player.yPos, player.xSize, player.ySize);
 
-  player.xNeg = player.xPos + player.size;
-  player.yNeg = player.yPos + player.size;
+  player.xNeg = player.xPos + player.xSize;
+  player.yNeg = player.yPos + player.ySize;
 
   //movement
   if (keys["up"]) {
