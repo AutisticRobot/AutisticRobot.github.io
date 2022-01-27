@@ -107,7 +107,7 @@ function update() {
     array.x.push(300)
     array.y.push(0)
     array.sizeX.push(60)
-    array.sizeY.push(60)
+    array.sizeY.push(10)
     i = 0;
   }
   i++
