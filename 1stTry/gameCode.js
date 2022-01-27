@@ -1,7 +1,7 @@
 var width = 900;
 var height = 500;
 var i = 1;
-var score = 420
+var score = 999;
 var array = {
   tag: [],
   x:[],
@@ -157,8 +157,8 @@ function update() {
   }
   
   ctx.fillStyle = 'green';
-  ctx.font = '20px comic-sans';
-  ctx.fillText(score, 0, 0, 100);
+  ctx.font = '20px san-serif';
+  ctx.fillText(score, 0, 0);
 }
 
 window.requestAnimationFrame(update);
