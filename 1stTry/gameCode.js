@@ -158,7 +158,7 @@ function update() {
   
   ctx.fillStyle = 'green';
   ctx.font = '20px san-serif';
-  ctx.fillText(score, 0, 0);
+  ctx.fillText('score', 10, 10);
 }
 
 window.requestAnimationFrame(update);
