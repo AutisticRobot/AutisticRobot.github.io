@@ -1,7 +1,11 @@
 var width = 900;
 var height = 500;
 var i = 1;
-var arr1 = [1];
+var array = {
+  tag: [],
+  x:[],
+  y:[],
+}
 
 var canvas = document.getElementById("ctx");
 var ctx = canvas.getContext("2d");
@@ -90,11 +94,11 @@ function keyUp(event) {
 
 // game loop----------------------------------------------------------------------------------------------------------------------------------------------
 function update() {
-  for (var t=0; t < arr1.length; t++){
-    arr1[t] += 5;
+  for (var t=0; t < array.x.length; t++){
+    array.x[t] += 5;
   }
   if (i === 20){
-    arr1.push(0)
+    array.x.push(0)
     i = 0;
   }
   i++
@@ -145,8 +149,8 @@ function update() {
     player.yPos = height;
   }
 
-  for (var t=0; t < arr1.length; t++){
-    deathSquare(300, arr1[t], 60, 60);
+  for (var t=0; t < array.x.length; t++){
+    deathSquare(300, array.x[t], 60, 60);
   }
 }
 
