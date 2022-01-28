@@ -1,7 +1,7 @@
 var width = 900;
 var height = 500;
 var i = 1;
-var score = 999;
+var score = 0;
 var array = {
   tag: [],
   x:[],
@@ -17,6 +17,7 @@ canvas.addEventListener("keydown", movePlayer);
 
 //player vars
 var player = {
+  frames: 5,
   xSize: 50,
   ySize: 50,
   xPos: 50,
@@ -27,18 +28,42 @@ var player = {
 };
 
 //square
-function deathSquare(xPos, yPos, xSize, ySize){
-  var xNeg;
-  var yNeg;
+function deathSquare(type, xPos, yPos, xSize, ySize, count){
+  var xNeg = xPos + xSize;
+  var yNeg = yPos + ySize;
 
-  xNeg = xPos + xSize;
-  yNeg = yPos + ySize;
-  ctx.fillStyle = "red";
+  switch(type){
+    case 0:
+      ctx.fillStyle = "red";
+      break;
+    case 1:
+      ctx.fillStyle = "yellow";
+      break;
+  }
   ctx.beginPath();
   ctx.fillRect(xPos, yPos, xSize, ySize);
-  if(player.yNeg >= yPos && player.xNeg >= xPos && player.yPos <= yNeg && player.xPos <= xNeg){
-    player.xPos = 50;
-    player.yPos = 50;
+  if(player.yNeg >= yPos && player.xNeg >= xPos && player.yPos <= yNeg && player.xPos <= xNeg && player.frames == 0){
+    switch(type){
+      case 0:
+        player.xPos = 50;
+        player.yPos = 50;
+        score -= 5;
+        player.frames += 5;
+        break;
+      case 1:
+        score += 5;
+        delete array.tag[count];
+        delete array.x[count];
+        delete array.y[count];
+        delete array.sizeX[count];
+        delete array.sizeY[count];
+        //array.tag.filter;
+        //array.x.filter;
+        //array.y.filter;
+        //array.sizeX.filter;
+        //array.sizeY.filter;
+        break;
+    }
   }
 }
 var keys = {
@@ -86,19 +111,33 @@ function keyUp(event) {
 
 // game loop----------------------------------------------------------------------------------------------------------------------------------------------
 function update() {
+  if(player.frames > 0){
+    player.frames -= 1;
+  }
   for (var t=0; t < array.tag.length; t++){
     switch (array.tag[t]){
       case 0:
         array.y[t] += 5;
+        break;
+      case 1:
+        array.y[t] += 5;
+        break;
     }
   }
   if (i === 20){
-    array.tag.push(0)
-    array.x.push(300)
-    array.y.push(0)
-    array.sizeX.push(60)
-    array.sizeY.push(10)
+    array.tag.push(0);
+    array.x.push(300);
+    array.y.push(0);
+    array.sizeX.push(60);
+    array.sizeY.push(10);
     i = 0;
+  }
+  if (i === 10){
+    array.tag.push(1);
+    array.x.push(320);
+    array.y.push(0);
+    array.sizeX.push(20);
+    array.sizeY.push(20);
   }
   i++
   
@@ -146,13 +185,13 @@ function update() {
     player.yPos = height;
   }
 
-  for (var t=0; t < array.tag.length; t++){
-    deathSquare(array.x[t], array.y[t], array.sizeX[t], array.sizeY[t]);
+  for (var c=0; c < array.tag.length; c++){
+      deathSquare(array.tag[c], array.x[c], array.y[c], array.sizeX[c], array.sizeY[c], c);
   }
   
   ctx.fillStyle = 'green';
   ctx.font = '30px comic-sans';
-  ctx.fillText('score:' + score, 10, 10);
+  ctx.fillText('Score: ' + score, 10, 30);
 }
 
 window.requestAnimationFrame(update);
