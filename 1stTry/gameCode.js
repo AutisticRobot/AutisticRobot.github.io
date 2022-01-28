@@ -1,7 +1,14 @@
 var width = 900;
 var height = 500;
 var i = 1;
-var arr1 = [1];
+var score = 0;
+var array = {
+  tag: [],
+  x:[],
+  y:[],
+  sizeX: [],
+  sizeY: [],
+}
 
 var canvas = document.getElementById("ctx");
 var ctx = canvas.getContext("2d");
@@ -10,38 +17,52 @@ canvas.addEventListener("keydown", movePlayer);
 
 //player vars
 var player = {
-  size: 50,
+  frames: 5,
+  xSize: 50,
+  ySize: 50,
   xPos: 50,
   yPos: 50,
-  xNeg: this.xPos + this.size,
-  yNeg: this.yPos + this.size,
-  xMid: this.xPos + this.size / 2,
-  yMid: this.yPos + this.size / 2,
+  xNeg: this.xPos + this.xSize,
+  yNeg: this.yPos + this.ySize,
   speed: 5,
 };
 
 //square
-function deathSquare(xPos, yPos, xSize, ySize){
-  var xNeg;
-  var yNeg;
-  var xMid;
-  var yMid;
+function deathSquare(type, xPos, yPos, xSize, ySize, count){
+  var xNeg = xPos + xSize;
+  var yNeg = yPos + ySize;
 
-  xNeg = xPos + xSize;
-  yNeg = yPos + ySize;
-  xMid = xPos + xSize / 2;
-  yMid = yPos + ySize / 2;
-  ctx.fillStyle = "red";
+  switch(type){
+    case 0:
+      ctx.fillStyle = "red";
+      break;
+    case 1:
+      ctx.fillStyle = "yellow";
+      break;
+  }
   ctx.beginPath();
   ctx.fillRect(xPos, yPos, xSize, ySize);
-  if(player.yNeg >= yPos){
-    if(player.xNeg >= xPos){
-      if(player.yPos <= yNeg){
-        if(player.xPos <= xNeg){
-          player.xPos = 50;
-          player.yPos = 50;
-        }
-      }
+  if(player.yNeg >= yPos && player.xNeg >= xPos && player.yPos <= yNeg && player.xPos <= xNeg && player.frames == 0){
+    switch(type){
+      case 0:
+        player.xPos = 50;
+        player.yPos = 50;
+        score -= 5;
+        player.frames += 5;
+        break;
+      case 1:
+        score += 5;
+        delete array.tag[count];
+        delete array.x[count];
+        delete array.y[count];
+        delete array.sizeX[count];
+        delete array.sizeY[count];
+        //array.tag.filter;
+        //array.x.filter;
+        //array.y.filter;
+        //array.sizeX.filter;
+        //array.sizeY.filter;
+        break;
     }
   }
 }
@@ -90,12 +111,33 @@ function keyUp(event) {
 
 // game loop----------------------------------------------------------------------------------------------------------------------------------------------
 function update() {
-  for (var t=0; t < arr1.length; t++){
-    arr1[t] += 5;
+  if(player.frames > 0){
+    player.frames -= 1;
+  }
+  for (var t=0; t < array.tag.length; t++){
+    switch (array.tag[t]){
+      case 0:
+        array.y[t] += 5;
+        break;
+      case 1:
+        array.y[t] += 5;
+        break;
+    }
   }
   if (i === 20){
-    arr1.push(0)
+    array.tag.push(0);
+    array.x.push(300);
+    array.y.push(0);
+    array.sizeX.push(60);
+    array.sizeY.push(10);
     i = 0;
+  }
+  if (i === 10){
+    array.tag.push(1);
+    array.x.push(320);
+    array.y.push(0);
+    array.sizeX.push(20);
+    array.sizeY.push(20);
   }
   i++
   
@@ -108,12 +150,10 @@ function update() {
   // player
   ctx.fillStyle = "black";
   ctx.beginPath();
-  ctx.fillRect(player.xPos, player.yPos, player.size, player.size);
+  ctx.fillRect(player.xPos, player.yPos, player.xSize, player.ySize);
 
-  player.xNeg = player.xPos + player.size;
-  player.yNeg = player.yPos + player.size;
-  player.xMid = player.xPos + player.size / 2;
-  player.yMid = player.yPos + player.size / 2;
+  player.xNeg = player.xPos + player.xSize;
+  player.yNeg = player.yPos + player.ySize;
 
   //movement
   if (keys["up"]) {
@@ -145,9 +185,13 @@ function update() {
     player.yPos = height;
   }
 
-  for (var t=0; t < arr1.length; t++){
-    deathSquare(300, arr1[t], 60, 60);
+  for (var c=0; c < array.tag.length; c++){
+      deathSquare(array.tag[c], array.x[c], array.y[c], array.sizeX[c], array.sizeY[c], c);
   }
+  
+  ctx.fillStyle = 'green';
+  ctx.font = '30px comic-sans';
+  ctx.fillText('Score: ' + score, 10, 30);
 }
 
 window.requestAnimationFrame(update);

@@ -1,0 +1,4 @@
+walls
+score
+coins
+arbitray obj move direction
