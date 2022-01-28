@@ -10,7 +10,7 @@ var array = {
   sizeY: [],
 }
 
-const canvas = document.getElementById("canvas");
+const canvas = document.getElementById("ctx");
 var ctx = canvas.getContext("2d");
 canvas.focus();
 canvas.addEventListener("onkeydown", movePlayer);
