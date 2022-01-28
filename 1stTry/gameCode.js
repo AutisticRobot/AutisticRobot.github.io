@@ -10,10 +10,10 @@ var array = {
   sizeY: [],
 }
 
-var canvas = document.getElementById("ctx");
+const canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 canvas.focus();
-canvas.addEventListener("keydown", movePlayer);
+canvas.addEventListener("onkeydown", movePlayer);
 
 //player vars
 var player = {
