@@ -49,6 +49,8 @@ function deathSquare(type, xPos, yPos, xSize, ySize, count){
         player.yPos = 50;
         score -= 5;
         player.frames += 5;
+        player.xNeg = player.xPos + player.xSize;
+        player.yNeg = player.yPos + player.ySize;
         break;
       case 1:
         score += 5;
@@ -57,11 +59,12 @@ function deathSquare(type, xPos, yPos, xSize, ySize, count){
         delete array.y[count];
         delete array.sizeX[count];
         delete array.sizeY[count];
-        //array.tag.filter;
-        //array.x.filter;
-        //array.y.filter;
-        //array.sizeX.filter;
-        //array.sizeY.filter;
+        array.tag.filter;
+        array.x.filter;
+        array.y.filter;
+        array.sizeX.filter;
+        array.sizeY.filter;
+        c--;
         break;
     }
   }
@@ -155,9 +158,6 @@ function update() {
   ctx.beginPath();
   ctx.fillRect(player.xPos, player.yPos, player.xSize, player.ySize);
 
-  player.xNeg = player.xPos + player.xSize;
-  player.yNeg = player.yPos + player.ySize;
-
   //movement
   if (keys["up"]) {
     player.yPos -= player.speed;
@@ -187,6 +187,8 @@ function update() {
   if (player.yPos < -50) {
     player.yPos = height;
   }
+  player.xNeg = player.xPos + player.xSize;
+  player.yNeg = player.yPos + player.ySize;
 
   for (var c=0; c < array.tag.length; c++){
       deathSquare(array.tag[c], array.x[c], array.y[c], array.sizeX[c], array.sizeY[c], c);
