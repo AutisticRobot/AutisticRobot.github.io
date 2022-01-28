@@ -59,12 +59,12 @@ function deathSquare(type, xPos, yPos, xSize, ySize, count){
         delete array.y[count];
         delete array.sizeX[count];
         delete array.sizeY[count];
-        array.tag.filter;
-        array.x.filter;
-        array.y.filter;
-        array.sizeX.filter;
-        array.sizeY.filter;
-        c--;
+        //array.tag.filter;
+        //array.x.filter;
+        //array.y.filter;
+        //array.sizeX.filter;
+        //array.sizeY.filter;
+        //c--;
         break;
     }
   }
@@ -194,7 +194,7 @@ function update() {
       deathSquare(array.tag[c], array.x[c], array.y[c], array.sizeX[c], array.sizeY[c], c);
   }
   
-  ctx.fillStyle = 'green';
+  ctx.fillStyle = 'LawnGreen';
   ctx.font = '30px comic-sans';
   ctx.fillText('Score: ' + score, 10, 30);
 }
