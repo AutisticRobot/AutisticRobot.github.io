@@ -10,10 +10,10 @@ var array = {
   sizeY: [],
 }
 
-var canvas = document.getElementById("ctx");
+const canvas = document.getElementById("ctx");
 var ctx = canvas.getContext("2d");
 canvas.focus();
-canvas.addEventListener("keydown", movePlayer);
+canvas.addEventListener("onkeydown", movePlayer);
 
 //player vars
 var player = {
@@ -49,6 +49,8 @@ function deathSquare(type, xPos, yPos, xSize, ySize, count){
         player.yPos = 50;
         score -= 5;
         player.frames += 5;
+        player.xNeg = player.xPos + player.xSize;
+        player.yNeg = player.yPos + player.ySize;
         break;
       case 1:
         score += 5;
@@ -62,6 +64,7 @@ function deathSquare(type, xPos, yPos, xSize, ySize, count){
         //array.y.filter;
         //array.sizeX.filter;
         //array.sizeY.filter;
+        //c--;
         break;
     }
   }
@@ -76,6 +79,9 @@ var keys = {
 //movements
 
 function movePlayer(event) {
+  if([32, 37, 38, 39, 40].indexOf(event.keyCode) > -1) {
+        event.preventDefault();
+    }
   switch (event.keyCode) {
     case 39:
       keys["right"] = true;
@@ -152,9 +158,6 @@ function update() {
   ctx.beginPath();
   ctx.fillRect(player.xPos, player.yPos, player.xSize, player.ySize);
 
-  player.xNeg = player.xPos + player.xSize;
-  player.yNeg = player.yPos + player.ySize;
-
   //movement
   if (keys["up"]) {
     player.yPos -= player.speed;
@@ -184,12 +187,14 @@ function update() {
   if (player.yPos < -50) {
     player.yPos = height;
   }
+  player.xNeg = player.xPos + player.xSize;
+  player.yNeg = player.yPos + player.ySize;
 
   for (var c=0; c < array.tag.length; c++){
       deathSquare(array.tag[c], array.x[c], array.y[c], array.sizeX[c], array.sizeY[c], c);
   }
   
-  ctx.fillStyle = 'green';
+  ctx.fillStyle = 'LawnGreen';
   ctx.font = '30px comic-sans';
   ctx.fillText('Score: ' + score, 10, 30);
 }
