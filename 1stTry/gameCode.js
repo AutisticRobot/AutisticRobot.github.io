@@ -203,14 +203,14 @@ function update() {
   
   ctx.fillStyle = 'LawnGreen';
   ctx.font = '30px comic-sans';
-  ctx.fillText('Score: ' + score, 10, 30);
-  if( score > hiscore){
+  ctx.fillText('Score: ' + score, 5, 25);
+  if( score > saved_data.hiscore){
     saved_data.hiscore = score;
     window.localStorage.setItem("SB-HS", JSON.stringify(saved_data));
   }
   ctx.fillStyle = 'LawnGreen';
   ctx.font = '30px comic-sans';
-  ctx.fillText('hiscore: ' + saved_data.hiscore, 10, 60);
+  ctx.fillText('hiscore: ' + saved_data.hiscore, 5, 50);
 }
 
 window.requestAnimationFrame(update);
