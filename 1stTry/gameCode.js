@@ -6,7 +6,7 @@ var saved_data = {
   hiscore: 0,
 }
 if(localStorage.getItem('SB-HS') !== null){
-  JSON.parse(localStorage.getItem('SB-HS'));
+  saved_data = JSON.parse(localStorage.getItem('SB-HS'));
 }
 var array = {
   tag: [],
