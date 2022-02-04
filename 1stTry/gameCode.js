@@ -2,8 +2,7 @@ var width = 900;
 var height = 500;
 var i = 1;
 var score = 0;
-var hiscore;
-if(JSON.parse(window.localStorage.getItem('SB-HS'));){
+if(JSON.parse(window.localStorage.getItem('SB-HS'))){
   JSON.parse(window.localStorage.getItem('SB-HS'));
 }else{
   var saved_data = {
