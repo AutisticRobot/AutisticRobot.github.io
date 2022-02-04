@@ -2,12 +2,11 @@ var width = 900;
 var height = 500;
 var i = 1;
 var score = 0;
+var saved_data = {
+  hiscore: 0,
+}
 if(window.localStorage.getItem('SB-HS') !== null){
   JSON.parse(window.localStorage.getItem('SB-HS'));
-}else{
-  var saved_data = {
-    hiscore: 0,
-  }
 }
 var array = {
   tag: [],
