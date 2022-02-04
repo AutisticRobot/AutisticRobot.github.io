@@ -3,8 +3,9 @@ var height = 500;
 var i = 1;
 var score = 0;
 var hiscore;
-JSON.parse(window.localStorage.getItem('SB-HS'));
-if(saved_data.hiscore == undefined || null){
+if(JSON.parse(window.localStorage.getItem('SB-HS'));){
+  JSON.parse(window.localStorage.getItem('SB-HS'));
+}else{
   var saved_data = {
     hiscore: 0,
   }
