@@ -2,6 +2,12 @@ var width = 900;
 var height = 500;
 var i = 1;
 var score = 0;
+var saved_data = {
+  hiscore: 0,
+}
+if(localStorage.getItem('SB-HS') !== null){
+  saved_data = JSON.parse(localStorage.getItem('SB-HS'));
+}
 var array = {
   tag: [],
   x:[],
@@ -196,7 +202,14 @@ function update() {
   
   ctx.fillStyle = 'LawnGreen';
   ctx.font = '30px comic-sans';
-  ctx.fillText('Score: ' + score, 10, 30);
+  ctx.fillText('Score: ' + score, 5, 50);
+  if( score > saved_data.hiscore){
+    saved_data.hiscore = score;
+    localStorage.setItem('SB-HS', JSON.stringify(saved_data));
+  }
+  ctx.fillStyle = 'LawnGreen';
+  ctx.font = '30px comic-sans';
+  ctx.fillText('hiscore: ' + saved_data.hiscore, 5, 25);
 }
 
 window.requestAnimationFrame(update);
