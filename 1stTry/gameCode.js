@@ -2,6 +2,13 @@ var width = 900;
 var height = 500;
 var i = 1;
 var score = 0;
+var hiscore;
+JSON.parse(window.localStorage.getItem("SB-HS"));
+if(saved_data === undefined || null){
+  var saved_data = {
+    hiscore: 0,
+  }
+}
 var array = {
   tag: [],
   x:[],
@@ -197,6 +204,13 @@ function update() {
   ctx.fillStyle = 'LawnGreen';
   ctx.font = '30px comic-sans';
   ctx.fillText('Score: ' + score, 10, 30);
+  if( score > hiscore){
+    saved_data.hiscore = score;
+    window.localStorage.setItem("SB-HS", JSON.stringify(saved_data));
+  }
+  ctx.fillStyle = 'LawnGreen';
+  ctx.font = '30px comic-sans';
+  ctx.fillText('hiscore: ' + saved_data.hiscore, 10, 60);
 }
 
 window.requestAnimationFrame(update);
