@@ -26,7 +26,7 @@ var player = {
   frames: 5,
   xSize: 50,
   ySize: 50,
-  xPos: 425,
+  xPos: 50,
   yPos: 225,
   xNeg: this.xPos + this.xSize,
   yNeg: this.yPos + this.ySize,
@@ -52,8 +52,8 @@ function deathSquare(type, xPos, yPos, xSize, ySize, count){
     switch(type){
       case 0:
         player.xPos = 50;
-        player.yPos = 50;
-        score -= 5;
+        player.yPos = 225;
+        score = 0;
         player.frames += 5;
         player.xNeg = player.xPos + player.xSize;
         player.yNeg = player.yPos + player.ySize;
@@ -139,7 +139,7 @@ function update() {
   if (i === 20){
     array.tag.push(0);
     array.x.push(300);
-    array.y.push(0);
+    array.y.push(-50);
     array.sizeX.push(60);
     array.sizeY.push(10);
     i = 0;
@@ -147,7 +147,7 @@ function update() {
   if (i === 10){
     array.tag.push(1);
     array.x.push(320);
-    array.y.push(0);
+    array.y.push(-50);
     array.sizeX.push(20);
     array.sizeY.push(20);
   }
