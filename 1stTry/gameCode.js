@@ -5,7 +5,7 @@ var score = 0;
 var saved_data = {
   hiscore: 0,
 }
-if(localStorage.getItem('SB-HS') !== null){
+if(saved_data in localStorage){
   saved_data = JSON.parse(localStorage.getItem('SB-HS'));
 }
 var array = {
@@ -26,8 +26,8 @@ var player = {
   frames: 5,
   xSize: 50,
   ySize: 50,
-  xPos: 50,
-  yPos: 50,
+  xPos: 425,
+  yPos: 225,
   xNeg: this.xPos + this.xSize,
   yNeg: this.yPos + this.ySize,
   speed: 5,
