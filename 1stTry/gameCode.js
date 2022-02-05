@@ -5,8 +5,8 @@ var score = 0;
 var saved_data = {
   hiscore: 0,
 }
-if(saved_data in localStorage){
-  saved_data = JSON.parse(localStorage.getItem('SB-HS'));
+if(saved_data in window.localStorage){
+  saved_data = JSON.parse(window.localStorage.getItem('SB-HS'));
 }
 var array = {
   tag: [],
@@ -205,7 +205,7 @@ function update() {
   ctx.fillText('Score: ' + score, 5, 50);
   if( score > saved_data.hiscore){
     saved_data.hiscore = score;
-    localStorage.setItem('SB-HS', JSON.stringify(saved_data));
+    window.localStorage.setItem('SB-HS', JSON.stringify(saved_data));
   }
   ctx.fillStyle = 'LawnGreen';
   ctx.font = '30px comic-sans';
