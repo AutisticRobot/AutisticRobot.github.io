@@ -5,7 +5,7 @@ var score = 0;
 var saved_data = {
   hiscore: 0,
 }
-if(saved_data in window.localStorage){
+if(window.localStorage.getItem('SB-HS') !== null){
   saved_data = JSON.parse(window.localStorage.getItem('SB-HS'));
 }
 var array = {
