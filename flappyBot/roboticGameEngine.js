@@ -1,12 +1,13 @@
-const canvas = document.getElementById("ctx")
+const canvas = document.getElementById("ctx");
+const body = document.getElementById("body");
 const ctx = canvas.getContext("2d");
 canvas.focus();
 const width = canvas.width;
 const height = canvas.height;
-canvas.addEventListener("keydown", (event)=>{
+body.addEventListener("keydown", event=>{
   keyAdd(event);
 });
-canvas.addEventListener("keyup", (event)=>{
+body.addEventListener("keyup", event=>{
   keyRemove(event);
 });
 
@@ -60,6 +61,8 @@ function render(id){
       render(c);
     }
   }
+  hitbox.farX[id] = hitbox.x[id] + hitbox.sizeX[id];
+  hitbox.farY[id] = hitbox.y[id] + hitbox.sizeY[id];
   if(typeof hitbox.color[id] !== 'string'){
     switch(hitbox.prop[id]){
       default:
@@ -81,22 +84,21 @@ function render(id){
 
 //Hitbox Collision Check
 function hitCheck(hitID1, hitID2){
-  hitbox.farX[hitID1] = hitbox.x[hitID1] + hitbox.sizeX[hitID1]
-  hitbox.farY[hitID1] = hitbox.y[hitID1] + hitbox.sizeY[hitID1]
-  hitbox.farX[hitID2] = hitbox.x[hitID2] + hitbox.sizeX[hitID2]
-  hitbox.farY[hitID2] = hitbox.y[hitID2] + hitbox.sizeY[hitID2]
-  if(hitbox.x[hitID1] > hitbox.farX[hitID2] &&
-     hitbox.y[hitID1] > hitbox.farY[hitID2] &&
-     hitbox.x[hitID2] > hitbox.farX[hitID1] &&
-     hitbox.y[hitID2] > hitbox.farY[hitID1]){
-    return "false";
-  }else{
-    return "true";
+  if(hitID1 != hitID2){
+    hitbox.farX[hitID1] = hitbox.x[hitID1] + hitbox.sizeX[hitID1]
+    hitbox.farY[hitID1] = hitbox.y[hitID1] + hitbox.sizeY[hitID1]
+    hitbox.farX[hitID2] = hitbox.x[hitID2] + hitbox.sizeX[hitID2]
+    hitbox.farY[hitID2] = hitbox.y[hitID2] + hitbox.sizeY[hitID2]
+    if(hitbox.x[hitID1] > hitbox.farX[hitID2] && hitbox.y[hitID1] > hitbox.farY[hitID2] && hitbox.x[hitID2] > hitbox.farX[hitID1] && hitbox.y[hitID2] > hitbox.farY[hitID1]){
+      return true;
+    }else{
+      return false;
+    }
   }
 }
 
 //Create hitbox
-function createBox(x, y, xMove, yMove, sizeX, sizeY, property, tag, color, hasMomentium, hasGravity, canDespawn){
+function createBox(x, y, xMove, yMove, sizeX, sizeY, property, tag, color, hasMomentium, hasGravity, despawn){
   if(tag === undefined || null){
     hitbox.tag.push(1);
   }else{
@@ -142,7 +144,7 @@ function createBox(x, y, xMove, yMove, sizeX, sizeY, property, tag, color, hasMo
   if(yMove === undefined || null){
     hitbox.yMove.push(0);
   }else{
-  hitbox.yMove.push(yMove);
+    hitbox.yMove.push(yMove);
   }
   if(hasMomentium === undefined || null){
     hitbox.hasMomentium.push(false);
@@ -177,6 +179,7 @@ function deleteHitbox(id){
   hitbox.hasGravity.splice(id,1);
   hitbox.hasMomentium.splice(id,1);
   hitbox.despawn.splice(id,1);
+  return("done");
 }
 
 //momentium update
@@ -261,7 +264,6 @@ function gravity(id, force){
 
 //update key list
 function keyAdd(event){
-  console.log("test");
   keys.push(event.keyCode);
   keyList.push(event.keyCode);
 }
