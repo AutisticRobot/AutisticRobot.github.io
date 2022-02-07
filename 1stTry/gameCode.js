@@ -31,7 +31,7 @@ var player = {
   yPos: 225,
   xNeg: this.xPos + this.xSize,
   yNeg: this.yPos + this.ySize,
-  speed: 5,
+  speed: 4,
 };
 
 //square
@@ -133,10 +133,10 @@ function update() {
       case 0:
         break;
       case 1:
-        array.y[t] += 5;
+        array.y[t] += 4;
         break;
       case 2:
-        array.y[t] -= 5;
+        array.y[t] -= 4;
         break;
     }
   }
@@ -150,7 +150,7 @@ function update() {
     
     
     array.tag.push(0);
-    array.x.push(400);
+    array.x.push(450);
     array.y.push(550);
     array.sizeX.push(60);
     array.sizeY.push(10);
@@ -158,7 +158,7 @@ function update() {
     
     
     array.tag.push(0);
-    array.x.push(500);
+    array.x.push(600);
     array.y.push(-50);
     array.sizeX.push(60);
     array.sizeY.push(10);
@@ -166,7 +166,7 @@ function update() {
     
     
     array.tag.push(0);
-    array.x.push(600);
+    array.x.push(750);
     array.y.push(550);
     array.sizeX.push(60);
     array.sizeY.push(10);
@@ -183,7 +183,7 @@ function update() {
     
     
     array.tag.push(1);
-    array.x.push(420);
+    array.x.push(470);
     array.y.push(550);
     array.sizeX.push(20);
     array.sizeY.push(20);
@@ -191,7 +191,7 @@ function update() {
     
     
     array.tag.push(1);
-    array.x.push(520);
+    array.x.push(620);
     array.y.push(-50);
     array.sizeX.push(20);
     array.sizeY.push(20);
@@ -199,7 +199,7 @@ function update() {
     
     
     array.tag.push(1);
-    array.x.push(620);
+    array.x.push(770);
     array.y.push(550);
     array.sizeX.push(20);
     array.sizeY.push(20);
