@@ -140,7 +140,7 @@ function update() {
         break;
     }
   }
-  if (i === 20){
+  if (i === 24){
     array.tag.push(0);
     array.x.push(300);
     array.y.push(-50);
@@ -173,7 +173,7 @@ function update() {
     array.di.push(2);
     i = 0;
   }
-  if (i === 10){
+  if (i === 12){
     array.tag.push(1);
     array.x.push(320);
     array.y.push(-50);
