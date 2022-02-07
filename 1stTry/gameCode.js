@@ -14,6 +14,7 @@ var array = {
   y:[],
   sizeX: [],
   sizeY: [],
+  di: [],
 }
 
 const canvas = document.getElementById("ctx");
@@ -65,6 +66,7 @@ function deathSquare(type, xPos, yPos, xSize, ySize, count){
         delete array.y[count];
         delete array.sizeX[count];
         delete array.sizeY[count];
+        delete array.di[count];
         //array.tag.filter;
         //array.x.filter;
         //array.y.filter;
@@ -127,12 +129,14 @@ function update() {
     player.frames -= 1;
   }
   for (var t=0; t < array.tag.length; t++){
-    switch (array.tag[t]){
+    switch (array.di[t]){
       case 0:
-        array.y[t] += 5;
         break;
       case 1:
         array.y[t] += 5;
+        break;
+      case 2:
+        array.y[t] -= 5;
         break;
     }
   }
@@ -142,6 +146,31 @@ function update() {
     array.y.push(-50);
     array.sizeX.push(60);
     array.sizeY.push(10);
+    array.di.push(1);
+    
+    
+    array.tag.push(0);
+    array.x.push(400);
+    array.y.push(550);
+    array.sizeX.push(60);
+    array.sizeY.push(10);
+    array.di.push(2);
+    
+    
+    array.tag.push(0);
+    array.x.push(500);
+    array.y.push(-50);
+    array.sizeX.push(60);
+    array.sizeY.push(10);
+    array.di.push(1);
+    
+    
+    array.tag.push(0);
+    array.x.push(600);
+    array.y.push(550);
+    array.sizeX.push(60);
+    array.sizeY.push(10);
+    array.di.push(2);
     i = 0;
   }
   if (i === 10){
@@ -150,6 +179,31 @@ function update() {
     array.y.push(-50);
     array.sizeX.push(20);
     array.sizeY.push(20);
+    array.di.push(1);
+    
+    
+    array.tag.push(1);
+    array.x.push(420);
+    array.y.push(550);
+    array.sizeX.push(20);
+    array.sizeY.push(20);
+    array.di.push(2);
+    
+    
+    array.tag.push(1);
+    array.x.push(520);
+    array.y.push(-50);
+    array.sizeX.push(20);
+    array.sizeY.push(20);
+    array.di.push(1);
+    
+    
+    array.tag.push(1);
+    array.x.push(620);
+    array.y.push(550);
+    array.sizeX.push(20);
+    array.sizeY.push(20);
+    array.di.push(2);
   }
   i++
   
