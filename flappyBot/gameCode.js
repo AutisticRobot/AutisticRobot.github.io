@@ -26,24 +26,24 @@ function Start(){
     deleteHitbox(0);
     console.log(0);
   }
-  if(hitbox.tag == undefined || null){
+  if(hitbox.tag[0] == undefined || null){
     createBox(100, 300, 0, 0, 10, 10, 0, 0, "yellow", true, false, false);
   }else{
     
-  hitbox.tag(0) = 0;
-  hitbox.prop(0) = 0;
-  hitbox.color(0) = "yellow";
-  hitbox.sizeX(0) = 10;
-  hitbox.sizeY(0) = 10;
-  hitbox.x(0) = 100;
-  hitbox.y(0) = 300;
-  hitbox.farX(0);
-  hitbox.farY(0);
-  hitbox.xMove(0) = 0;
-  hitbox.yMove(0) = 0;
-  hitbox.hasGravity(0) = false;
-  hitbox.hasMomentium(0) = true;
-  hitbox.despawn(0) = false;
+  hitbox.tag[0] = 0;
+  hitbox.prop[0] = 0;
+  hitbox.color[0] = "yellow";
+  hitbox.sizeX[0] = 10;
+  hitbox.sizeY[0] = 10;
+  hitbox.x[0] = 100;
+  hitbox.y[0] = 300;
+  hitbox.farX[0] = 110;
+  hitbox.farY[0] = 310;
+  hitbox.xMove[0] = 0;
+  hitbox.yMove[0] = 0;
+  hitbox.hasGravity[0] = false;
+  hitbox.hasMomentium[0] = true;
+  hitbox.despawn[0] = false;
   }
 }
 
