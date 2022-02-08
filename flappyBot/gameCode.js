@@ -2,6 +2,19 @@ var time = 119;
 var game = false;
 var start = true;
 
+function cHitCheck(hitID1, hitID2){
+  if(0 != hitID2){
+    hitbox.farX[0] = hitbox.x[0] + hitbox.sizeX[0]
+    hitbox.farY[0] = hitbox.y[0] + hitbox.sizeY[0]
+    hitbox.farX[hitID2] = hitbox.x[hitID2] + hitbox.sizeX[hitID2]
+    hitbox.farY[hitID2] = hitbox.y[hitID2] + hitbox.sizeY[hitID2]
+    if(hitbox.x[0] > hitbox.farX[hitID2] && hitbox.y[0] > hitbox.farY[hitID2] && hitbox.x[hitID2] > hitbox.farX[0] && hitbox.y[hitID2] > hitbox.farY[0]){
+      return true;
+    }else{
+      return false;
+    }
+  }
+}
 
 function Start(){
   ctx.clearRect(0, 0, width, height);
@@ -13,7 +26,25 @@ function Start(){
     deleteHitbox(0);
     console.log(0);
   }
-  createBox(100, 300, 0, 0, 10, 10, 0, 0, "yellow", true, false, false);
+  if(hitbox.tag == undefined || null){
+    createBox(100, 300, 0, 0, 10, 10, 0, 0, "yellow", true, false, false);
+  }else{
+    
+  hitbox.tag(0) = 0;
+  hitbox.prop(0) = 0;
+  hitbox.color(0) = "yellow";
+  hitbox.sizeX(0) = 10;
+  hitbox.sizeY(0) = 10;
+  hitbox.x(0) = 100;
+  hitbox.y(0) = 300;
+  hitbox.farX(0);
+  hitbox.farY(0);
+  hitbox.xMove(0) = 0;
+  hitbox.yMove(0) = 0;
+  hitbox.hasGravity(0) = false;
+  hitbox.hasMomentium(0) = true;
+  hitbox.despawn(0) = false;
+  }
 }
 
 
@@ -58,7 +89,7 @@ function update() {
     }
 
     for(var c=0; c < hitbox.tag.length; c++){
-      if(hitCheck(0, c)){
+      if(cHitCheck(0, c)){
         game = false;
       }
     }
