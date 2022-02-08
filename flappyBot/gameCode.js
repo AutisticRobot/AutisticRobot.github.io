@@ -1,6 +1,8 @@
 var time = 119;
 var game = false;
-var start = true;
+var start = false;
+
+    createBox(100, 300, 0, 0, 10, 10, 0, 0, "yellow", true, false, false);
 
 function cHitCheck(hitID1, hitID2){
   if(0 != hitID2){
