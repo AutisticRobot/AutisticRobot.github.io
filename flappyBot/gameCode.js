@@ -8,8 +8,20 @@ function cHitCheck(hitID1, hitID2){
     hitbox.farY[0] = hitbox.y[0] + hitbox.sizeY[0]
     hitbox.farX[hitID2] = hitbox.x[hitID2] + hitbox.sizeX[hitID2]
     hitbox.farY[hitID2] = hitbox.y[hitID2] + hitbox.sizeY[hitID2]
-    if(hitbox.x[0] > hitbox.farX[hitID2] && hitbox.y[0] > hitbox.farY[hitID2] && hitbox.x[hitID2] > hitbox.farX[0] && hitbox.y[hitID2] > hitbox.farY[0]){
-      return true;
+    if(hitbox.x[0] > hitbox.farX[hitID2]){
+      if(hitbox.y[0] > hitbox.farY[hitID2]){
+        if(hitbox.x[hitID2] > hitbox.farX[0]){
+          if(hitbox.y[hitID2] > hitbox.farY[0]){
+            return true;
+          }else{
+            return false;
+          }
+        }else{
+          return false;
+        }
+      }else{
+        return false;
+      }
     }else{
       return false;
     }
@@ -21,10 +33,8 @@ function Start(){
   game = true;
   start = false;
   var chop = hitbox.tag.length;
-  console.log(chop)
   while(hitbox.tag.length > 0){
     deleteHitbox(0);
-    console.log(0);
   }
   if(hitbox.tag[0] == undefined || null){
     createBox(100, 300, 0, 0, 10, 10, 0, 0, "yellow", true, false, false);
