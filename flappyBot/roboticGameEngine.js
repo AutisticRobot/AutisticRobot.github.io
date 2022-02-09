@@ -80,6 +80,11 @@ function render(id){
   }
   ctx.beginPath();
   ctx.fillRect(hitbox.x[id], hitbox.y[id], hitbox.sizeX[id], hitbox.sizeY[id]);
+  function drawBorder(xPos, yPos, width, height, thickness = 1)
+{
+  ctx.fillStyle='#000';
+  ctx.fillRect(hitbox.x[id] - 1, hitbox.y[id] - 1, hitbox.sizeX[id] + 2, hitbox.sizeY[id] + 2);
+}
 }
 
 //Hitbox Collision Check
