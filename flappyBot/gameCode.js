@@ -126,8 +126,14 @@ function update() {
 
     for(var b=0; b < keys.length; b++){
       if(keyList[b] != null || undefined){
+        if(keyList[b] == 80){
+          hitbox.yMove[0] = 0;
+          hitbox.hasGravity[0] = false;
+          game = false;
+        }else{
         hitbox.hasGravity[0] = true;
         hitbox.yMove[0] = -15;
+        }
         keyList.splice(b,1);
       }
     }
