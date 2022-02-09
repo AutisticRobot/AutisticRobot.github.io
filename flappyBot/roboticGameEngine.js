@@ -61,6 +61,10 @@ function render(id){
       render(c);
     }
   }
+  
+  ctx.fillStyle='black';
+  ctx.fillRect(hitbox.x[id] - 1, hitbox.y[id] - 1, hitbox.sizeX[id] + 2, hitbox.sizeY[id] + 2);
+  
   hitbox.farX[id] = hitbox.x[id] + hitbox.sizeX[id];
   hitbox.farY[id] = hitbox.y[id] + hitbox.sizeY[id];
   if(typeof hitbox.color[id] !== 'string'){
@@ -80,9 +84,7 @@ function render(id){
   }
   ctx.beginPath();
   ctx.fillRect(hitbox.x[id], hitbox.y[id], hitbox.sizeX[id], hitbox.sizeY[id]);
-  
-  ctx.fillStyle='black';
-  ctx.fillRect(hitbox.x[id] - 1, hitbox.y[id] - 1, hitbox.sizeX[id] + 2, hitbox.sizeY[id] + 2);
+ 
 }
 
 //Hitbox Collision Check
