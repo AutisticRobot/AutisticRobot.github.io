@@ -120,7 +120,7 @@ function update() {
     }
 
     for(var b=0; b < keys.length; b++){
-      if(keyList[b] == 32){
+      if(keyList[b] != null || undefined){
         hitbox.hasGravity[0] = true;
         hitbox.yMove[0] = -15;
         keyList.splice(b,1);
