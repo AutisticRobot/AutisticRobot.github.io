@@ -5,7 +5,7 @@ canvas.focus();
 const width = canvas.width;
 const height = canvas.height;
 body.addEventListener("keydown", event=>{
-  if(event.keyCode != 17 || 16){
+  if(event.keyCode != 17 && 16){
     keyAdd(event);
   }
 });
