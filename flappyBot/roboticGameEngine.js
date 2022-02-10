@@ -5,7 +5,9 @@ canvas.focus();
 const width = canvas.width;
 const height = canvas.height;
 body.addEventListener("keydown", event=>{
-  keyAdd(event);
+  if(event != 17 || 16){
+    keyAdd(event);
+  }
 });
 body.addEventListener("keyup", event=>{
   keyRemove(event);
