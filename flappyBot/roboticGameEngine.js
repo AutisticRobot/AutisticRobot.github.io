@@ -61,6 +61,10 @@ function render(id){
       render(c);
     }
   }
+  
+  ctx.fillStyle='black';
+  ctx.fillRect(hitbox.x[id] - 1, hitbox.y[id] - 1, hitbox.sizeX[id] + 2, hitbox.sizeY[id] + 2);
+  
   hitbox.farX[id] = hitbox.x[id] + hitbox.sizeX[id];
   hitbox.farY[id] = hitbox.y[id] + hitbox.sizeY[id];
   if(typeof hitbox.color[id] !== 'string'){
@@ -80,6 +84,7 @@ function render(id){
   }
   ctx.beginPath();
   ctx.fillRect(hitbox.x[id], hitbox.y[id], hitbox.sizeX[id], hitbox.sizeY[id]);
+ 
 }
 
 //Hitbox Collision Check
@@ -192,12 +197,28 @@ function move(id){
 function uniUpdate(gForce, airResist, buffer){
   for(var c=0; c < hitbox.tag.length; c++){
     switch(c){
+      case 0:
+        gravity(hitbox.tag.length - 1, gForce);
+        momentium(hitbox.tag.length - 1, airResist);
+        move(hitbox.tag.length - 1);
+        despawn(hitbox.tag.length - 1, buffer)
+        render(hitbox.tag.length - 1);
+      break;
+
       default:
-      gravity(c, gForce);
-      momentium(c, airResist);
-      move(c);
-      despawn(c, buffer)
-      render(c);
+        gravity(c, gForce);
+        momentium(c, airResist);
+        move(c);
+        despawn(c, buffer)
+        render(c);
+      break;
+
+      case hitbox.tag.length - 1:
+        gravity(0, gForce);
+        momentium(0, airResist);
+        move(0);
+        despawn(0, buffer)
+        render(0);
       break;
     }
   }
