@@ -8,6 +8,7 @@ body.addEventListener("keydown", event=>{
   if(event.keyCode != 17 && 16){
     keyAdd(event);
   }
+  keys.push(event.keyCode);
 });
 body.addEventListener("keyup", event=>{
   keyRemove(event);
@@ -292,7 +293,6 @@ function gravity(id, force){
 //update key list
 function keyAdd(event){
   if(event.keyCode != 17 && event.keyCode != 16){
-    keys.push(event.keyCode);
     keyList.push(event.keyCode);
   }
 }
