@@ -197,6 +197,13 @@ function move(id){
 function uniUpdate(gForce, airResist, buffer){
   for(var c=0; c < hitbox.tag.length; c++){
     switch(c){
+      case 0:
+        gravity(0, gForce);
+        momentium(0, airResist);
+        move(0);
+        despawn(0, buffer)
+        render(0);
+        break;
       default:
       gravity(c, gForce);
       momentium(c, airResist);
@@ -204,6 +211,13 @@ function uniUpdate(gForce, airResist, buffer){
       despawn(c, buffer)
       render(c);
       break;
+      case hitbox.tag.length - 1:
+        gravity(hitbox.tag.length - 1, gForce);
+        momentium(hitbox.tag.length - 1, airResist);
+        move(hitbox.tag.length - 1);
+        despawn(hitbox.tag.length - 1, buffer)
+        render(hitbox.tag.length - 1);
+        break;
     }
   }
 }
