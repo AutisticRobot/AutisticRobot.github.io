@@ -71,7 +71,7 @@ function Start(){
 
 
 body.addEventListener("keydown", e=>{
-  if(game == false){
+  if(game == false && e.keyCode != 17 && 16){
     Start();
   }
 });
