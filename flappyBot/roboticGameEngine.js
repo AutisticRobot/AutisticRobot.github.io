@@ -9,6 +9,9 @@ body.addEventListener("keydown", event=>{
     keyAdd(event);
   }
   keys.push(event.keyCode);
+  if(event.keyCode == 32){
+    event.preventDefault();
+  }
 });
 body.addEventListener("keyup", event=>{
   keyRemove(event);
