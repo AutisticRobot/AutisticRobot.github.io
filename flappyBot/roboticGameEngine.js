@@ -291,7 +291,7 @@ function gravity(id, force){
 
 //update key list
 function keyAdd(event){
-  if(event.keyCode != 17 || 16){
+  if(event.keyCode != 17 && event.keyCode != 16){
     keys.push(event.keyCode);
     keyList.push(event.keyCode);
   }
@@ -301,7 +301,7 @@ function keyRemove(event){
   let id = 0;
   var done = false;
   while(done == false){
-    if(keys[id] == event.keyCode && keys[id] != 17 && keys[id] != 16){
+    if(keys[id] == event.keyCode){
       keys.splice(id,1);
       done = true;
     }else{
