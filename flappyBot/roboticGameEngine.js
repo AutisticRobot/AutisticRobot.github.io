@@ -291,8 +291,10 @@ function gravity(id, force){
 
 //update key list
 function keyAdd(event){
-  keys.push(event.keyCode);
-  keyList.push(event.keyCode);
+  if(event.keyCode != 17 || 16){
+    keys.push(event.keyCode);
+    keyList.push(event.keyCode);
+  }
 }
 
 function keyRemove(event){
