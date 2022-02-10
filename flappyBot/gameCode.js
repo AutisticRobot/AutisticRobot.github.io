@@ -125,7 +125,7 @@ function update() {
     }
 
     for(var b=0; b < keys.length; b++){
-      if(keyList[b] != null || undefined){
+      if(keyList[b] != null || undefined || 17 || 16){
         if(keyList[b] == 80){
           hitbox.yMove[0] = 0;
           hitbox.hasGravity[0] = false;
