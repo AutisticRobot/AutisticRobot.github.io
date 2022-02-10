@@ -301,7 +301,7 @@ function keyRemove(event){
   let id = 0;
   var done = false;
   while(done == false){
-    if(keys[id] == event.keyCode){
+    if(keys[id] == event.keyCode && keys[id] != 17 && keys[id] != 16){
       keys.splice(id,1);
       done = true;
     }else{
