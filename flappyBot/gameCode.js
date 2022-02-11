@@ -52,8 +52,8 @@ function Start(){
   }else{
     
   hitbox.tag[0] = 0;
-  hitbox.prop[0] = 0;
-  hitbox.color[0] = "yellow";
+  hitbox.prop[0] = 1;
+  hitbox.color[0] = 0;
   hitbox.sizeX[0] = 8;
   hitbox.sizeY[0] = 8;
   hitbox.x[0] = 100;
