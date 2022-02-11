@@ -86,6 +86,7 @@ if(start == true){
 function update() {
   ctx.clearRect(0, 0, width, height);
   window.requestAnimationFrame(update);
+  var img = document.getElementById("face");
 
 
   for(var a=0; a < hitbox.tag.length; a++){
@@ -155,12 +156,17 @@ function update() {
   uniUpdate(.5);
 
 
+
+  ctx.drawImage(img, 32, 32);
+
   ctx.fillStyle = 'black';
   ctx.font = '30px comic-sans';
   ctx.fillText('hiscore: ' + hiscore, 5, 25);
   ctx.fillStyle = 'black';
   ctx.font = '30px comic-sans';
   ctx.fillText('score: ' + score, 5, 65);
+
+  
 }
 
 window.requestAnimationFrame(update);
