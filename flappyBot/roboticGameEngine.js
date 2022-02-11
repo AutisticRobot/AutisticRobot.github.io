@@ -82,7 +82,7 @@ function render(id){
         ctx.fillStyle = "black";
         break;
       case 1:
-        ctx.fillStyle = "yellow";
+        ctx.drawImage(img, hitbox.x[id], hitbox.y[id], hitbox.sizeX[id], hitbox.sizeY[id]);
         break;
     }
   } else {

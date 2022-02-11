@@ -48,14 +48,14 @@ function Start(){
     deleteHitbox(0);
   }
   if(hitbox.tag[0] == undefined || null){
-    createBox(100, 300, 0, 0, 10, 10, 0, 0, "yellow", true, false, false);
+    createBox(100, 300, 0, 0, 8, 8, 0, 0, "yellow", true, false, false);
   }else{
     
   hitbox.tag[0] = 0;
   hitbox.prop[0] = 0;
   hitbox.color[0] = "yellow";
-  hitbox.sizeX[0] = 10;
-  hitbox.sizeY[0] = 10;
+  hitbox.sizeX[0] = 8;
+  hitbox.sizeY[0] = 8;
   hitbox.x[0] = 100;
   hitbox.y[0] = 300;
   hitbox.farX[0] = 110;
@@ -157,7 +157,6 @@ function update() {
 
 
 
-  ctx.drawImage(img, 32, 32);
 
   ctx.fillStyle = 'black';
   ctx.font = '30px comic-sans';
