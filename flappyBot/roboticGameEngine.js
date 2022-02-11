@@ -9,7 +9,7 @@ body.addEventListener("keydown", event=>{
     keyAdd(event);
   }
   keys.push(event.keyCode);
-  if(event.keyCode == 32){
+  if(event.keyCode == 32 || 40 || 39 || 38 || 37){
     event.preventDefault();
   }
 });
