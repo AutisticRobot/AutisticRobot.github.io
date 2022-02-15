@@ -9,7 +9,7 @@ if(window.localStorage.getItem('FlappyBot') !== null){
   hiscore = JSON.parse(window.localStorage.getItem('FlappyBot'));
 }
 
-createBox(100, 300, 0, 0, 10, 10, 0, 0, "yellow", true, false, false);
+createBox(100, 300, 0, 0, 8, 8, 1, 0, 0, true, false, false);
 
 function cHitCheck(hitID2){
   if(0 != hitID2){
@@ -48,7 +48,7 @@ function Start(){
     deleteHitbox(0);
   }
   if(hitbox.tag[0] == undefined || null){
-    createBox(100, 300, 0, 0, 8, 8, 0, 0, "yellow", true, false, false);
+    createBox(100, 300, 0, 0, 8, 8, 1, 0, 0, true, false, false);
   }else{
     
   hitbox.tag[0] = 0;
@@ -92,7 +92,9 @@ function update() {
   for(var a=0; a < hitbox.tag.length; a++){
     if(cHitCheck(a)){
       game = false;
-      hitbox.yMove[0] = 0;
+      if(game){
+        hitbox.yMove[0] = 0;
+      }
     }
   }
 
