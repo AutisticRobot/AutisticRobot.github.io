@@ -74,7 +74,7 @@ function render(id){
   
   hitbox.farX[id] = hitbox.x[id] + hitbox.sizeX[id];
   hitbox.farY[id] = hitbox.y[id] + hitbox.sizeY[id];
-  if(typeof hitbox.color[id] !== 'string'){
+  if(typeof hitbox.color[id] != "string"){
     switch(hitbox.prop[id]){
       default:
         ctx.fillStyle = "#424242";
