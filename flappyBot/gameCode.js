@@ -136,7 +136,7 @@ function update() {
           game = false;
         }else{
         hitbox.hasGravity[0] = true;
-        hitbox.yMove[0] = -10;
+        hitbox.yMove[0] = -13;
         }
         keyList.splice(b,1);
       }
