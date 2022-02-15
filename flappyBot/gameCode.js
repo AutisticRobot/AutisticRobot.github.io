@@ -92,6 +92,7 @@ function update() {
   for(var a=0; a < hitbox.tag.length; a++){
     if(cHitCheck(a)){
       game = false;
+      hitbox.yMove[0] = 0;
     }
   }
 
