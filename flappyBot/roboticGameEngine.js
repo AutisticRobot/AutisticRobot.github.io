@@ -83,6 +83,7 @@ function render(id){
         ctx.fillStyle = "black";
         break;
       case 1:
+        ctx.fillStyle = "rgba(255, 255, 255, 0)";
         ctx.drawImage(img, 0, 0, 16, 16, hitbox.x[id], hitbox.y[id], hitbox.sizeX[id], hitbox.sizeY[id]);
         break;
     }
