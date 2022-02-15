@@ -4,7 +4,7 @@ const ctx = canvas.getContext("2d");
 canvas.focus();
 const width = canvas.width;
 const height = canvas.height;
-const img = document.getElementById("face");
+const img = document.getElementById('face');
 body.addEventListener("keydown", event=>{
   if(event.keyCode != 17 && 16){
     keyAdd(event);
@@ -83,7 +83,7 @@ function render(id){
         ctx.fillStyle = "black";
         break;
       case 1:
-        ctx.drawImage(img, hitbox.x[id], hitbox.y[id], hitbox.sizeX[id], hitbox.sizeY[id]);
+        ctx.drawImage(img, 0, 0, 16, 16, hitbox.x[id], hitbox.y[id], hitbox.sizeX[id], hitbox.sizeY[id]);
         break;
     }
   } else {
