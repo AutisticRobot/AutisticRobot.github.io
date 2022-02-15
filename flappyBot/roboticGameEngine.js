@@ -4,6 +4,7 @@ const ctx = canvas.getContext("2d");
 canvas.focus();
 const width = canvas.width;
 const height = canvas.height;
+const img = document.getElementById("face");
 body.addEventListener("keydown", event=>{
   if(event.keyCode != 17 && 16){
     keyAdd(event);
