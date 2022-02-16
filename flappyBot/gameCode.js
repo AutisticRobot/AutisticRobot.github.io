@@ -9,7 +9,7 @@ if(window.localStorage.getItem('FlappyBot') !== null){
   hiscore = JSON.parse(window.localStorage.getItem('FlappyBot'));
 }
 
-createBox(100, 300, 0, 0, 10, 10, 0, 0, "yellow", true, false, false);
+createBox(100, 300, 0, 0, 32, 32, 1, 0, 0, true, false, false);
 
 function cHitCheck(hitID2){
   if(0 != hitID2){
@@ -48,14 +48,14 @@ function Start(){
     deleteHitbox(0);
   }
   if(hitbox.tag[0] == undefined || null){
-    createBox(100, 300, 0, 0, 10, 10, 0, 0, "yellow", true, false, false);
+    createBox(100, 300, 0, 0, 32, 32, 1, 0, 0, true, false, false);
   }else{
     
   hitbox.tag[0] = 0;
-  hitbox.prop[0] = 0;
-  hitbox.color[0] = "yellow";
-  hitbox.sizeX[0] = 10;
-  hitbox.sizeY[0] = 10;
+  hitbox.prop[0] = 1;
+  hitbox.color[0] = 0;
+  hitbox.sizeX[0] = 32;
+  hitbox.sizeY[0] = 32;
   hitbox.x[0] = 100;
   hitbox.y[0] = 300;
   hitbox.farX[0] = 110;
@@ -71,7 +71,7 @@ function Start(){
 
 
 body.addEventListener("keydown", e=>{
-  if(game == false){
+  if(game == false && e.keyCode != 17 && e.keyCode != 16){
     Start();
   }
 });
@@ -86,17 +86,21 @@ if(start == true){
 function update() {
   ctx.clearRect(0, 0, width, height);
   window.requestAnimationFrame(update);
+  var img = document.getElementById("face");
 
 
   for(var a=0; a < hitbox.tag.length; a++){
     if(cHitCheck(a)){
+      if(game){
+        hitbox.yMove[0] = 0;
+      }
       game = false;
     }
   }
 
   if(hitbox.y[0] >= height - 10){
     hitbox.yMove[0] = 0;
-    hitbox.y[0] = height - 10;
+    hitbox.y[0] = height - 32;
     hitbox.hasGravity[0] = false;
     game = false;
   }
@@ -125,14 +129,14 @@ function update() {
     }
 
     for(var b=0; b < keys.length; b++){
-      if(keyList[b] != null || undefined || 17 || 16){
+      if(keyList[b] != null || undefined){
         if(keyList[b] == 80){
           hitbox.yMove[0] = 0;
           hitbox.hasGravity[0] = false;
           game = false;
         }else{
         hitbox.hasGravity[0] = true;
-        hitbox.yMove[0] = -15;
+        hitbox.yMove[0] = -13;
         }
         keyList.splice(b,1);
       }
@@ -155,12 +159,16 @@ function update() {
   uniUpdate(.5);
 
 
+
+
   ctx.fillStyle = 'black';
   ctx.font = '30px comic-sans';
   ctx.fillText('hiscore: ' + hiscore, 5, 25);
   ctx.fillStyle = 'black';
   ctx.font = '30px comic-sans';
   ctx.fillText('score: ' + score, 5, 65);
+
+  
 }
 
 window.requestAnimationFrame(update);

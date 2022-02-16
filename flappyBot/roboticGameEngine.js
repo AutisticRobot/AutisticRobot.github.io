@@ -4,8 +4,15 @@ const ctx = canvas.getContext("2d");
 canvas.focus();
 const width = canvas.width;
 const height = canvas.height;
+const img = document.getElementById('face');
 body.addEventListener("keydown", event=>{
-  keyAdd(event);
+  if(event.keyCode != 17 && 16){
+    keyAdd(event);
+  }
+  keys.push(event.keyCode);
+  if(event.keyCode == 32 || 40 || 39 || 38 || 37){
+    event.preventDefault();
+  }
 });
 body.addEventListener("keyup", event=>{
   keyRemove(event);
@@ -67,7 +74,7 @@ function render(id){
   
   hitbox.farX[id] = hitbox.x[id] + hitbox.sizeX[id];
   hitbox.farY[id] = hitbox.y[id] + hitbox.sizeY[id];
-  if(typeof hitbox.color[id] !== 'string'){
+  if(typeof hitbox.color[id] != "string"){
     switch(hitbox.prop[id]){
       default:
         ctx.fillStyle = "#424242";
@@ -76,7 +83,8 @@ function render(id){
         ctx.fillStyle = "black";
         break;
       case 1:
-        ctx.fillStyle = "yellow";
+        ctx.fillStyle = "rgba(255, 255, 255, 0)";
+        ctx.drawImage(img, hitbox.x[id], hitbox.y[id], hitbox.sizeX[id], hitbox.sizeY[id]);
         break;
     }
   } else {
@@ -289,8 +297,9 @@ function gravity(id, force){
 
 //update key list
 function keyAdd(event){
-  keys.push(event.keyCode);
-  keyList.push(event.keyCode);
+  if(event.keyCode != 17 && event.keyCode != 16){
+    keyList.push(event.keyCode);
+  }
 }
 
 function keyRemove(event){
