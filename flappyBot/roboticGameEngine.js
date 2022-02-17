@@ -203,31 +203,21 @@ function move(id){
 
 //universial updater
 function uniUpdate(gForce, airResist, buffer){
+  var maxTag = 0;
   for(var c=0; c < hitbox.tag.length; c++){
-    switch(c){
-      case 0:
-        gravity(hitbox.tag.length - 1, gForce);
-        momentium(hitbox.tag.length - 1, airResist);
-        move(hitbox.tag.length - 1);
-        despawn(hitbox.tag.length - 1, buffer)
-        render(hitbox.tag.length - 1);
-      break;
-
-      default:
+    if(hitbox.tag[c] > maxTag){
+      maxtag = hitbox.tag[c];
+    }
+  }
+  for(var c1=0; c1 < maxTag; c1++){
+    for(var c=0; c < hitbox.tag.length; c++){
+      if(hitbox.tag[c] == c1){
         gravity(c, gForce);
         momentium(c, airResist);
         move(c);
         despawn(c, buffer)
         render(c);
-      break;
-
-      case hitbox.tag.length - 1:
-        gravity(0, gForce);
-        momentium(0, airResist);
-        move(0);
-        despawn(0, buffer)
-        render(0);
-      break;
+      }
     }
   }
 }

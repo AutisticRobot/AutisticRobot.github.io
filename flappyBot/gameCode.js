@@ -9,10 +9,10 @@ if(window.localStorage.getItem('FlappyBot') !== null){
   hiscore = JSON.parse(window.localStorage.getItem('FlappyBot'));
 }
 
-createBox(100, 300, 0, 0, 32, 32, 1, 0, 0, true, false, false);
+createBox(100, 300, 0, 0, 64, 64, 1, 2, 0, true, false, false);
 
 function cHitCheck(hitID2){
-  if(0 != hitID2){
+  if(hitbox.prop[hitID2] == 0){
     hitbox.farX[0] = hitbox.x[0] + hitbox.sizeX[0];
     hitbox.farY[0] = hitbox.y[0] + hitbox.sizeY[0];
     hitbox.farX[hitID2] = hitbox.x[hitID2] + hitbox.sizeX[hitID2];
@@ -48,14 +48,14 @@ function Start(){
     deleteHitbox(0);
   }
   if(hitbox.tag[0] == undefined || null){
-    createBox(100, 300, 0, 0, 32, 32, 1, 0, 0, true, false, false);
+    createBox(100, 300, 0, 0, 64, 64, 1, 2, 0, true, false, false);
   }else{
     
-  hitbox.tag[0] = 0;
+  hitbox.tag[0] = 2;
   hitbox.prop[0] = 1;
   hitbox.color[0] = 0;
-  hitbox.sizeX[0] = 32;
-  hitbox.sizeY[0] = 32;
+  hitbox.sizeX[0] = 64;
+  hitbox.sizeY[0] = 64;
   hitbox.x[0] = 100;
   hitbox.y[0] = 300;
   hitbox.farX[0] = 110;
@@ -111,21 +111,24 @@ function update() {
   
   if(game){
     time++;
-    if(time == 100){
+    if(time == 100){//create pipe
       var center = {
         x: 1200,
         y: Math.floor(Math.random() * 300) + 150,
         offset: 100,
       }
-      createBox(center.x, center.y + center.offset, -5, null, 50, 600, 1, 1, '#20fc20', false, false, true);
-      createBox(center.x, center.y - center.offset - 600, -5, null, 50, 600, 1, 1, '#20fc20', false, false, true);
+      createBox(center.x, center.y + center.offset, -5, null, 50, 600, 0, 1, '#20fc20', false, false, true);
+      createBox(center.x, center.y - center.offset - 600, -5, null, 50, 600, 0, 1, '#20fc20', false, false, true);
       time = 0;
     }
-    if(time == 20){
+    if(time == 20){//add score
       hidden++;
       if(hidden > score){
         score = hidden;
       }
+    }
+    if(time % 20 == 10){//create cloud
+      createBox(width, Math.floor(Math.random() * 600), -2.5, 0, 64, 32, 2, 0, white, false, false, true);
     }
 
     for(var b=0; b < keys.length; b++){
@@ -136,7 +139,7 @@ function update() {
           game = false;
         }else{
         hitbox.hasGravity[0] = true;
-        hitbox.yMove[0] = -12;
+        hitbox.yMove[0] = -10;
         }
         keyList.splice(b,1);
       }
