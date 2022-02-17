@@ -205,7 +205,7 @@ function move(id){
 function uniUpdate(gForce, airResist, buffer){
   var maxTag = 0;
   for(var c=0; c < hitbox.tag.length; c++){
-    if(hitbox.tag[c] > maxTag){
+    if(hitbox.tag[c] > this.maxTag){
       this.maxtag = hitbox.tag[c];
     }
   }
