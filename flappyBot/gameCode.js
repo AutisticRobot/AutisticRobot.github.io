@@ -128,7 +128,8 @@ function update() {
       }
     }
     if(time % 20 == 10){//create cloud
-      createBox(width, Math.floor(Math.random() * 600), -2.5, 0, 64, 32, 2, 0, white, false, false, true);
+      var cloudY = Math.floor(Math.random() * 600);
+      createBox(width, cloudY, -2.5, 0, 64, 32, 2, 0, 'white', false, false, true);
     }
 
     for(var b=0; b < keys.length; b++){
