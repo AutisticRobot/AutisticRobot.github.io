@@ -66,7 +66,7 @@ function Start(){
   hitbox.hasMomentium[0] = true;
   hitbox.despawn[0] = false;
   }
-  for(var cloud = width - 10; cloud > -64; cloud - 20){
+  for(var cloud=1190; cloud > -64; cloud - 20){
     var cloudY = Math.floor(Math.random() * 600);
     createBox(cloud, cloudY, -2.5, 0, 64, 32, 2, 0, 'white', false, false, true);
   }
