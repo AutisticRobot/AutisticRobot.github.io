@@ -152,6 +152,9 @@ function update() {
       var cloudY = Math.floor(Math.random() * 600);
       var cloudS = Math.floor(Math.random() * 1) -3;
       createBox(cloud, cloudY, cloudS, 0, 64, 32, 2, 0, 'white', false, false, true);
+      var cloudY = Math.floor(Math.random() * 600);
+      var cloudS = Math.floor(Math.random() * 1) -3;
+      createBox(cloud, cloudY, cloudS, 0, 64, 32, 2, 0, 'white', false, false, true);
     }
 
     for(var b=0; b < keys.length; b++){
@@ -182,7 +185,7 @@ function update() {
 
 
 
-  uniUpdate(.5);
+  uniUpdate(.5, game);
 
 
 

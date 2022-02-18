@@ -197,7 +197,7 @@ function move(id){
 
 //universial updater
 var maxTag;
-function uniUpdate(gForce, airResist, buffer){
+function uniUpdate(gForce, game, airResist, buffer){
   maxTag = 2;
   //for(var c=0; c < hitbox.tag.length; c++){
   //  if(hitbox.tag[c] > maxTag){
@@ -210,7 +210,7 @@ function uniUpdate(gForce, airResist, buffer){
         if(hitbox.tag[c] == t){
           gravity(c, gForce);
           momentium(c, airResist);
-          if(hitbox.tag[c] == 2 || game == true){
+          if(hitbox.tag[c] == 2 && game == true){
             move(c);
           }
           despawn(c, buffer);
