@@ -100,9 +100,9 @@ function Start(){
 
 body.addEventListener("keydown", e=>{
   if(game == false && e.keyCode != 17 && e.keyCode != 16){
-    if(e.key == b){
-      bgClouds = true;
-    }
+    //if(e.key == b){
+    //  bgClouds = true;
+    //}
     Start();
   }
 });
