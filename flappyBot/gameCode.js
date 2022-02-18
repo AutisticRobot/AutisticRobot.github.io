@@ -49,8 +49,10 @@ function Start(){
   hidden = -3;
   score = 0;
   time = 0;
-  while(hitbox.tag.length > 0){
-    deleteHitbox(0);
+  if(sC == false){
+    while(hitbox.tag.length > 0){
+      deleteHitbox(0);
+    }
   }
   if(hitbox.tag[0] == undefined || null){
     createBox(100, 300, 0, 0, 64, 64, 1, 2, 0, true, false, false);
