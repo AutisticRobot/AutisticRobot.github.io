@@ -44,9 +44,6 @@ function cHitCheck(hitID2){
 }
 
 function Start(){
-  if(sC){
-    ctx.clearRect(0, 0, width, height);
-  }
   game = true;
   start = false;
   hidden = -3;
@@ -75,7 +72,7 @@ function Start(){
   hitbox.despawn[0] = false;
   }
   if(sC == false){
-    for(var cloud=1190; cloud >= -64; cloud -= 20){
+    for(var cloud=1175; cloud >= -64; cloud -= 50){
       var cloudY = Math.floor(Math.random() * 600);
       createBox(cloud, cloudY, -2.5, 0, 64, 32, 2, 0, 'white', false, false, true);
     }
