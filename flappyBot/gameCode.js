@@ -92,7 +92,7 @@ function Start(){
       var cloudY = Math.floor(Math.random() * 600);
       createBox(cloud, cloudY, 0, 0, 64, 32, 2, 0, 'white', false, false, true);
     }
-    bgClouds == false;
+    bgClouds = false;
   }
 }
 
@@ -101,7 +101,7 @@ function Start(){
 body.addEventListener("keydown", e=>{
   if(game == false && e.keyCode != 17 && e.keyCode != 16){
     if(e.key == b){
-      bgClouds == true;
+      bgClouds = true;
     }
     Start();
   }
