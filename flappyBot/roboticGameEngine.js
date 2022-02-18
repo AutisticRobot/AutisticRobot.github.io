@@ -210,7 +210,9 @@ function uniUpdate(gForce, airResist, buffer){
         if(hitbox.tag[c] == t){
           gravity(c, gForce);
           momentium(c, airResist);
-          move(c);
+          if(hitbox.tag[c] == 2 || game == true){
+            move(c);
+          }
           despawn(c, buffer);
           render(c);
         }

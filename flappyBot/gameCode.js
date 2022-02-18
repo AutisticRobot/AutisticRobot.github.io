@@ -13,7 +13,8 @@ if(window.localStorage.getItem('FlappyBot') !== null){
 createBox(100, 300, 0, 0, 64, 64, 1, 2, 0, true, false, false);
 for(var cloud=1175; cloud >= -64; cloud -= 50){
   var cloudY = Math.floor(Math.random() * 600);
-  createBox(cloud, cloudY, -2.5, 0, 64, 32, 2, 0, 'white', false, false, true);
+  var cloudS = Math.floor(Math.random() * 1) -3;
+  createBox(cloud, cloudY, cloudS, 0, 64, 32, 2, 0, 'white', false, false, true);
   sC = true;
 }
 
@@ -81,28 +82,20 @@ function Start(){
   if(sC == false){
     for(var cloud=1175; cloud >= -64; cloud -= 50){
       var cloudY = Math.floor(Math.random() * 600);
-      createBox(cloud, cloudY, -2.5, 0, 64, 32, 2, 0, 'white', false, false, true);
+      var cloudS = Math.floor(Math.random() * 1) -3;
+      createBox(cloud, cloudY, cloudS, 0, 64, 32, 2, 0, 'white', false, false, true);
+      var cloudY = Math.floor(Math.random() * 600);
+      var cloudS = Math.floor(Math.random() * 1) -3;
+      createBox(cloud, cloudY, cloudS, 0, 64, 32, 2, 0, 'white', false, false, true);
     }
   }
   sC = false;
-
-  //background clouds
-  if(bgClouds == true){
-    for(var cloud=1175; cloud >= -64; cloud -= 50){
-      var cloudY = Math.floor(Math.random() * 600);
-      createBox(cloud, cloudY, 0, 0, 64, 32, 2, 0, 'white', false, false, true);
-    }
-    bgClouds = false;
-  }
 }
 
 
 
 body.addEventListener("keydown", e=>{
   if(game == false && e.keyCode != 17 && e.keyCode != 16){
-    if(e.keyCode == 66){
-      bgClouds = true;
-    }
     Start();
   }
 });
@@ -157,7 +150,8 @@ function update() {
     }
     if(time % 20 == 10){//create cloud
       var cloudY = Math.floor(Math.random() * 600);
-      createBox(width, cloudY, -2.5, 0, 64, 32, 2, 0, 'white', false, false, true);
+      var cloudS = Math.floor(Math.random() * 1) -3;
+      createBox(cloud, cloudY, cloudS, 0, 64, 32, 2, 0, 'white', false, false, true);
     }
 
     for(var b=0; b < keys.length; b++){
