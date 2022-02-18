@@ -1,6 +1,7 @@
 var time = 0;
 var game = false;
 var start = false;
+var sC = false;
 
 var hidden = -3;
 var score = 0;
@@ -10,6 +11,11 @@ if(window.localStorage.getItem('FlappyBot') !== null){
 }
 
 createBox(100, 300, 0, 0, 64, 64, 1, 2, 0, true, false, false);
+for(var cloud=1190; cloud >= -64; cloud =- 20){
+  var cloudY = Math.floor(Math.random() * 600);
+  createBox(cloud, cloudY, -2.5, 0, 64, 32, 2, 0, 'white', false, false, true);
+  sC = true;
+}
 
 function cHitCheck(hitID2){
   if(hitbox.prop[hitID2] == 0){
@@ -66,10 +72,13 @@ function Start(){
   hitbox.hasMomentium[0] = true;
   hitbox.despawn[0] = false;
   }
-  for(var cloud=1190; cloud > -64; cloud - 20){
-    var cloudY = Math.floor(Math.random() * 600);
-    createBox(cloud, cloudY, -2.5, 0, 64, 32, 2, 0, 'white', false, false, true);
+  if(sC == false){
+    for(var cloud=1190; cloud >= -64; cloud =- 20){
+      var cloudY = Math.floor(Math.random() * 600);
+      createBox(cloud, cloudY, -2.5, 0, 64, 32, 2, 0, 'white', false, false, true);
+    }
   }
+  sC = false;
 }
 
 
