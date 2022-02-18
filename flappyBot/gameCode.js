@@ -102,9 +102,9 @@ function update() {
     }
   }
 
-  if(hitbox.y[0] >= height - 10){
+  if(hitbox.y[0] >= height - hitbox.sizeY[0]){
     hitbox.yMove[0] = 0;
-    hitbox.y[0] = height - 32;
+    hitbox.y[0] = height - hitbox.sizeY[0];
     hitbox.hasGravity[0] = false;
     game = false;
   }
