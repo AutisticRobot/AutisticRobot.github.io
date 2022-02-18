@@ -206,13 +206,14 @@ function uniUpdate(gForce, airResist, buffer){
   //}
   for(var t=0; t <= maxTag; t++){
     for(var c=0; c < hitbox.tag.length; c++){
-      render(0);
-      if(hitbox.tag[c] == t){
-        gravity(c, gForce);
-        momentium(c, airResist);
-        move(c);
-        despawn(c, buffer);
-        render(c);
+      if(hitbox.tag[c] !== undefined || null){
+        if(hitbox.tag[c] == t){
+          gravity(c, gForce);
+          momentium(c, airResist);
+          move(c);
+          despawn(c, buffer);
+          render(c);
+        }
       }
     }
   }
