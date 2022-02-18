@@ -204,19 +204,20 @@ function move(id){
 //universial updater
 var maxTag;
 function uniUpdate(gForce, airResist, buffer){
-  maxTag = 0;
-  for(var c=0; c < hitbox.tag.length; c++){
-    if(hitbox.tag[c] > maxTag){
-      maxtag = hitbox.tag[c];
-    }
-  }
-  for(var c1=0; c1 <= maxTag; c1++){
+  maxTag = 2;
+  //for(var c=0; c < hitbox.tag.length; c++){
+  //  if(hitbox.tag[c] > maxTag){
+  //    maxtag = hitbox.tag[c];
+  //  }
+  //}
+  for(var t=0; t <= maxTag; t++){
     for(var c=0; c < hitbox.tag.length; c++){
-      if(hitbox.tag[c] == c1){
+      render(0);
+      if(hitbox.tag[c] == t){
         gravity(c, gForce);
         momentium(c, airResist);
         move(c);
-        despawn(c, buffer)
+        despawn(c, buffer);
         render(c);
       }
     }
