@@ -202,14 +202,15 @@ function move(id){
 }
 
 //universial updater
+var maxTag;
 function uniUpdate(gForce, airResist, buffer){
-  var maxTag = 0;
+  maxTag = 0;
   for(var c=0; c < hitbox.tag.length; c++){
-    if(hitbox.tag[c] > this.maxTag){
-      this.maxtag = hitbox.tag[c];
+    if(hitbox.tag[c] > maxTag){
+      maxtag = hitbox.tag[c];
     }
   }
-  for(var c1=0; c1 <= this.maxTag; c1++){
+  for(var c1=0; c1 <= maxTag; c1++){
     for(var c=0; c < hitbox.tag.length; c++){
       if(hitbox.tag[c] == c1){
         gravity(c, gForce);
