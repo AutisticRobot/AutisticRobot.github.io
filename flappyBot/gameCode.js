@@ -11,7 +11,7 @@ if(window.localStorage.getItem('FlappyBot') !== null){
 }
 
 createBox(100, 300, 0, 0, 64, 64, 1, 2, 0, true, false, false);
-for(var cloud=1190; cloud >= -64; cloud =- 20){
+for(var cloud=1190; cloud >= -64; cloud -= 20){
   var cloudY = Math.floor(Math.random() * 600);
   createBox(cloud, cloudY, -2.5, 0, 64, 32, 2, 0, 'white', false, false, true);
   sC = true;
@@ -73,7 +73,7 @@ function Start(){
   hitbox.despawn[0] = false;
   }
   if(sC == false){
-    for(var cloud=1190; cloud >= -64; cloud =- 20){
+    for(var cloud=1190; cloud >= -64; cloud -= 20){
       var cloudY = Math.floor(Math.random() * 600);
       createBox(cloud, cloudY, -2.5, 0, 64, 32, 2, 0, 'white', false, false, true);
     }
