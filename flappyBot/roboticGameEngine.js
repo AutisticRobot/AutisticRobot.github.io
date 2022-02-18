@@ -55,12 +55,6 @@ function updateCursorPos(event){
   }
 }
 
-//testing function
-function test(){
-  createBox();
-  render(0);
-}
-
 //square render
 function render(id){
   if(id == "all"){
