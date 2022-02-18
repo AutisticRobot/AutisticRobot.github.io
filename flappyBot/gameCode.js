@@ -11,7 +11,7 @@ if(window.localStorage.getItem('FlappyBot') !== null){
 }
 
 createBox(100, 300, 0, 0, 64, 64, 1, 2, 0, true, false, false);
-for(var cloud=1190; cloud >= -64; cloud -= 20){
+for(var cloud=1175; cloud >= -64; cloud -= 50){
   var cloudY = Math.floor(Math.random() * 600);
   createBox(cloud, cloudY, -2.5, 0, 64, 32, 2, 0, 'white', false, false, true);
   sC = true;
@@ -44,7 +44,9 @@ function cHitCheck(hitID2){
 }
 
 function Start(){
-  ctx.clearRect(0, 0, width, height);
+  if(sC){
+    ctx.clearRect(0, 0, width, height);
+  }
   game = true;
   start = false;
   hidden = -3;
