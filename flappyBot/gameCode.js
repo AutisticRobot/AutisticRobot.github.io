@@ -55,7 +55,7 @@ function Start(){
   }else{
     for(var c=0; hitbox.tag.length > c; c++){
       if(hitbox.prop[c] == 2){
-        hitbox.yMove[c] = -2.5;
+        hitbox.xMove[c] = -2.5;
       }
     }
   }
@@ -100,9 +100,9 @@ function Start(){
 
 body.addEventListener("keydown", e=>{
   if(game == false && e.keyCode != 17 && e.keyCode != 16){
-    //if(e.key == b){
-    //  bgClouds = true;
-    //}
+    if(e.keyCode == 66){
+      bgClouds = true;
+    }
     Start();
   }
 });
