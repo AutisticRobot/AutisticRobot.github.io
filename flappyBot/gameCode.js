@@ -1,7 +1,7 @@
 var time = 0;
 var game = false;
-var start = false;
 var sC = false;
+var bgClouds = false;
 
 var hidden = -3;
 var score = 0;
@@ -45,13 +45,18 @@ function cHitCheck(hitID2){
 
 function Start(){
   game = true;
-  start = false;
   hidden = -3;
   score = 0;
   time = 0;
   if(sC == false){
     while(hitbox.tag.length > 0){
       deleteHitbox(0);
+    }
+  }else{
+    for(var c=0; hitbox.tag.length > c; c++){
+      if(hitbox.prop[c] == 2){
+        hitbox.yMove[c] = -2.5;
+      }
     }
   }
   if(hitbox.tag[0] == undefined || null){
@@ -80,19 +85,28 @@ function Start(){
     }
   }
   sC = false;
+
+  //background clouds
+  if(bgClouds == true){
+    for(var cloud=1175; cloud >= -64; cloud -= 50){
+      var cloudY = Math.floor(Math.random() * 600);
+      createBox(cloud, cloudY, 0, 0, 64, 32, 2, 0, 'white', false, false, true);
+    }
+    bgClouds == false;
+  }
 }
 
 
 
 body.addEventListener("keydown", e=>{
   if(game == false && e.keyCode != 17 && e.keyCode != 16){
+    if(e.key == b){
+      bgClouds == true;
+    }
     Start();
   }
 });
 
-if(start == true){
-  Start();
-}
 
 
 
