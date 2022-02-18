@@ -81,11 +81,11 @@ function Start(){
   }
   if(sC == false){
     for(var cloud=1175; cloud >= -64; cloud -= 50){
-      var cloudY = Math.floor(Math.random() * 600);
-      var cloudS = Math.floor(Math.random() * 1) -3;
+      var cloudY = Math.random() * 600;
+      var cloudS = (Math.random() * 1) -3;
       createBox(cloud, cloudY, cloudS, 0, 64, 32, 2, 0, 'white', false, false, true);
-      var cloudY = Math.floor(Math.random() * 600);
-      var cloudS = Math.floor(Math.random() * 1) -3;
+      var cloudY = Math.random() * 600;
+      var cloudS = (Math.random() * 1) -3;
       createBox(cloud, cloudY, cloudS, 0, 64, 32, 2, 0, 'white', false, false, true);
     }
   }
