@@ -151,10 +151,10 @@ function update() {
     if(time % 20 == 10){//create cloud
       var cloudY = Math.floor(Math.random() * 600);
       var cloudS = Math.floor(Math.random() * 1) -3;
-      createBox(cloud, cloudY, cloudS, 0, 64, 32, 2, 0, 'white', false, false, true);
+      createBox(width, cloudY, cloudS, 0, 64, 32, 2, 0, 'white', false, false, true);
       var cloudY = Math.floor(Math.random() * 600);
       var cloudS = Math.floor(Math.random() * 1) -3;
-      createBox(cloud, cloudY, cloudS, 0, 64, 32, 2, 0, 'white', false, false, true);
+      createBox(width, cloudY, cloudS, 0, 64, 32, 2, 0, 'white', false, false, true);
     }
 
     for(var b=0; b < keys.length; b++){
