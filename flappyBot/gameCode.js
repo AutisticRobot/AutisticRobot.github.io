@@ -2,6 +2,8 @@ var time = 0;
 var game = false;
 var sC = false;
 var bgClouds = false;
+var cloudY = Math.random() * 600;
+var cloudS = (Math.random() * 2) -3;
 
 var hidden = -3;
 var score = 0;
@@ -12,8 +14,11 @@ if(window.localStorage.getItem('FlappyBot') !== null){
 
 createBox(100, 300, 0, 0, 64, 64, 1, 2, 0, true, false, false);
 for(var cloud=1175; cloud >= -64; cloud -= 50){
-  var cloudY = Math.random() * 600;
-  var cloudS = (Math.random() * 1) -3;
+  cloudY = Math.random() * 600;
+  cloudS = (Math.random() * 2) - 4;
+  createBox(cloud, cloudY, cloudS, 0, 64, 32, 2, 0, 'white', false, false, true);
+  cloudY = Math.random() * 600;
+  cloudS = (Math.random() * 2) - 4;
   createBox(cloud, cloudY, cloudS, 0, 64, 32, 2, 0, 'white', false, false, true);
   sC = true;
 }
@@ -53,12 +58,6 @@ function Start(){
     while(hitbox.tag.length > 0){
       deleteHitbox(0);
     }
-  }else{
-    for(var c=0; hitbox.tag.length > c; c++){
-      if(hitbox.prop[c] == 2){
-        hitbox.xMove[c] = -2.5;
-      }
-    }
   }
   if(hitbox.tag[0] == undefined || null){
     createBox(100, 300, 0, 0, 64, 64, 1, 2, 0, true, false, false);
@@ -81,11 +80,11 @@ function Start(){
   }
   if(sC == false){
     for(var cloud=1175; cloud >= -64; cloud -= 50){
-      var cloudY = Math.random() * 600;
-      var cloudS = (Math.random() * 1) -3;
+      cloudY = Math.random() * 600;
+      cloudS = (Math.random() * 2) - 4;
       createBox(cloud, cloudY, cloudS, 0, 64, 32, 2, 0, 'white', false, false, true);
-      var cloudY = Math.random() * 600;
-      var cloudS = (Math.random() * 1) -3;
+      cloudY = Math.random() * 600;
+      cloudS = (Math.random() * 2) - 4;
       createBox(cloud, cloudY, cloudS, 0, 64, 32, 2, 0, 'white', false, false, true);
     }
   }
@@ -107,7 +106,6 @@ body.addEventListener("keydown", e=>{
 function update() {
   ctx.clearRect(0, 0, width, height);
   window.requestAnimationFrame(update);
-  var img = document.getElementById("face");
 
 
   for(var a=0; a < hitbox.tag.length; a++){
@@ -149,11 +147,11 @@ function update() {
       }
     }
     if(time % 20 == 10){//create cloud
-      var cloudY = Math.floor(Math.random() * 600);
-      var cloudS = Math.floor(Math.random() * 1) -3;
+      cloudY = Math.random() * 600;
+      cloudS = (Math.random() * 2) - 4;
       createBox(width, cloudY, cloudS, 0, 64, 32, 2, 0, 'white', false, false, true);
-      var cloudY = Math.floor(Math.random() * 600);
-      var cloudS = Math.floor(Math.random() * 1) -3;
+      cloudY = Math.random() * 600;
+      cloudS = (Math.random() * 2) - 4;
       createBox(width, cloudY, cloudS, 0, 64, 32, 2, 0, 'white', false, false, true);
     }
 
@@ -172,10 +170,6 @@ function update() {
     }
 
 
-  }else{
-    for(var tag = 0; tag < hitbox.tag.length; tag++) {
-      hitbox.xMove[tag] = 0;
-    };
   }
 
   if( score > hiscore){
