@@ -55,12 +55,6 @@ function updateCursorPos(event){
   }
 }
 
-//testing function
-function test(){
-  createBox();
-  render(0);
-}
-
 //square render
 function render(id){
   if(id == "all"){
@@ -202,32 +196,31 @@ function move(id){
 }
 
 //universial updater
-function uniUpdate(gForce, airResist, buffer){
-  for(var c=0; c < hitbox.tag.length; c++){
-    switch(c){
-      case 0:
-        gravity(hitbox.tag.length - 1, gForce);
-        momentium(hitbox.tag.length - 1, airResist);
-        move(hitbox.tag.length - 1);
-        despawn(hitbox.tag.length - 1, buffer)
-        render(hitbox.tag.length - 1);
-      break;
-
-      default:
-        gravity(c, gForce);
-        momentium(c, airResist);
-        move(c);
-        despawn(c, buffer)
-        render(c);
-      break;
-
-      case hitbox.tag.length - 1:
-        gravity(0, gForce);
-        momentium(0, airResist);
-        move(0);
-        despawn(0, buffer)
-        render(0);
-      break;
+var maxTag;
+function uniUpdate(gForce, game, airResist, buffer){
+  maxTag = 2;
+  //for(var c=0; c < hitbox.tag.length; c++){
+  //  if(hitbox.tag[c] > maxTag){
+  //    maxtag = hitbox.tag[c];
+  //  }
+  //}
+  for(var t=0; t <= maxTag; t++){
+    for(var c=0; c < hitbox.tag.length; c++){
+      if(hitbox.tag[c] !== undefined || null){
+        if(hitbox.tag[c] == t){
+          gravity(c, gForce);
+          momentium(c, airResist);
+          if(hitbox.prop[c] != 1){
+            if (game == true){
+              move(c);
+            }
+          }else {
+            move(c);
+          }
+          despawn(c, buffer);
+          render(c);
+        }
+      }
     }
   }
 }

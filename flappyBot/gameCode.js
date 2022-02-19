@@ -1,6 +1,9 @@
 var time = 0;
 var game = false;
-var start = false;
+var sC = false;
+var bgClouds = false;
+var cloudY = Math.random() * 600;
+var cloudS = (Math.random() * 2) -3;
 
 var hidden = -3;
 var score = 0;
@@ -9,10 +12,19 @@ if(window.localStorage.getItem('FlappyBot') !== null){
   hiscore = JSON.parse(window.localStorage.getItem('FlappyBot'));
 }
 
-createBox(100, 300, 0, 0, 32, 32, 1, 0, 0, true, false, false);
+createBox(100, 300, 0, 0, 64, 64, 1, 2, 0, true, false, false);
+for(var cloud=1175; cloud >= -64; cloud -= 50){
+  cloudY = Math.random() * 600;
+  cloudS = (Math.random() * 2) - 4;
+  createBox(cloud, cloudY, cloudS, 0, 64, 32, 2, 0, 'white', false, false, true);
+  cloudY = Math.random() * 600;
+  cloudS = (Math.random() * 2) - 4;
+  createBox(cloud, cloudY, cloudS, 0, 64, 32, 2, 0, 'white', false, false, true);
+  sC = true;
+}
 
 function cHitCheck(hitID2){
-  if(0 != hitID2){
+  if(hitbox.prop[hitID2] == 0){
     hitbox.farX[0] = hitbox.x[0] + hitbox.sizeX[0];
     hitbox.farY[0] = hitbox.y[0] + hitbox.sizeY[0];
     hitbox.farX[hitID2] = hitbox.x[hitID2] + hitbox.sizeX[hitID2];
@@ -38,24 +50,24 @@ function cHitCheck(hitID2){
 }
 
 function Start(){
-  ctx.clearRect(0, 0, width, height);
   game = true;
-  start = false;
   hidden = -3;
   score = 0;
   time = 0;
-  while(hitbox.tag.length > 0){
-    deleteHitbox(0);
+  if(sC == false){
+    while(hitbox.tag.length > 0){
+      deleteHitbox(0);
+    }
   }
   if(hitbox.tag[0] == undefined || null){
-    createBox(100, 300, 0, 0, 32, 32, 1, 0, 0, true, false, false);
+    createBox(100, 300, 0, 0, 64, 64, 1, 2, 0, true, false, false);
   }else{
     
-  hitbox.tag[0] = 0;
+  hitbox.tag[0] = 2;
   hitbox.prop[0] = 1;
   hitbox.color[0] = 0;
-  hitbox.sizeX[0] = 32;
-  hitbox.sizeY[0] = 32;
+  hitbox.sizeX[0] = 64;
+  hitbox.sizeY[0] = 64;
   hitbox.x[0] = 100;
   hitbox.y[0] = 300;
   hitbox.farX[0] = 110;
@@ -66,6 +78,17 @@ function Start(){
   hitbox.hasMomentium[0] = true;
   hitbox.despawn[0] = false;
   }
+  if(sC == false){
+    for(var cloud=1175; cloud >= -64; cloud -= 50){
+      cloudY = Math.random() * 600;
+      cloudS = (Math.random() * 2) - 4;
+      createBox(cloud, cloudY, cloudS, 0, 64, 32, 2, 0, 'white', false, false, true);
+      cloudY = Math.random() * 600;
+      cloudS = (Math.random() * 2) - 4;
+      createBox(cloud, cloudY, cloudS, 0, 64, 32, 2, 0, 'white', false, false, true);
+    }
+  }
+  sC = false;
 }
 
 
@@ -76,9 +99,6 @@ body.addEventListener("keydown", e=>{
   }
 });
 
-if(start == true){
-  Start();
-}
 
 
 
@@ -86,7 +106,6 @@ if(start == true){
 function update() {
   ctx.clearRect(0, 0, width, height);
   window.requestAnimationFrame(update);
-  var img = document.getElementById("face");
 
 
   for(var a=0; a < hitbox.tag.length; a++){
@@ -98,9 +117,9 @@ function update() {
     }
   }
 
-  if(hitbox.y[0] >= height - 10){
+  if(hitbox.y[0] >= height - hitbox.sizeY[0]){
     hitbox.yMove[0] = 0;
-    hitbox.y[0] = height - 32;
+    hitbox.y[0] = height - hitbox.sizeY[0];
     hitbox.hasGravity[0] = false;
     game = false;
   }
@@ -111,21 +130,29 @@ function update() {
   
   if(game){
     time++;
-    if(time == 100){
+    if(time == 100){//create pipe
       var center = {
         x: 1200,
         y: Math.floor(Math.random() * 300) + 150,
         offset: 100,
       }
-      createBox(center.x, center.y + center.offset, -5, null, 50, 600, 1, 1, '#20fc20', false, false, true);
-      createBox(center.x, center.y - center.offset - 600, -5, null, 50, 600, 1, 1, '#20fc20', false, false, true);
+      createBox(center.x, center.y + center.offset, -5, null, 50, 600, 0, 1, '#20fc20', false, false, true);
+      createBox(center.x, center.y - center.offset - 600, -5, null, 50, 600, 0, 1, '#20fc20', false, false, true);
       time = 0;
     }
-    if(time == 20){
+    if(time == 20){//add score
       hidden++;
       if(hidden > score){
         score = hidden;
       }
+    }
+    if(time % 20 == 10){//create cloud
+      cloudY = Math.random() * 600;
+      cloudS = (Math.random() * 2) - 4;
+      createBox(width, cloudY, cloudS, 0, 64, 32, 2, 0, 'white', false, false, true);
+      cloudY = Math.random() * 600;
+      cloudS = (Math.random() * 2) - 4;
+      createBox(width, cloudY, cloudS, 0, 64, 32, 2, 0, 'white', false, false, true);
     }
 
     for(var b=0; b < keys.length; b++){
@@ -136,17 +163,13 @@ function update() {
           game = false;
         }else{
         hitbox.hasGravity[0] = true;
-        hitbox.yMove[0] = -13;
+        hitbox.yMove[0] = -10;
         }
         keyList.splice(b,1);
       }
     }
 
 
-  }else{
-    for(var tag = 0; tag < hitbox.tag.length; tag++) {
-      hitbox.xMove[tag] = 0;
-    };
   }
 
   if( score > hiscore){
@@ -156,7 +179,7 @@ function update() {
 
 
 
-  uniUpdate(.5);
+  uniUpdate(.5, game);
 
 
 
