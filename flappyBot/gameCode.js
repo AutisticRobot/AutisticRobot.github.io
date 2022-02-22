@@ -11,9 +11,6 @@ var hiscore = 0;
 if(window.localStorage.getItem('FlappyBot') !== null){
   hiscore = JSON.parse(window.localStorage.getItem('FlappyBot'));
 }
-if(hiscore == 44){
-  hiscore = 42;
-}
 
 createBox(100, 300, 0, 0, 64, 64, 1, 2, 0, true, false, false);
 for(var cloud=1175; cloud >= -64; cloud -= 50){
