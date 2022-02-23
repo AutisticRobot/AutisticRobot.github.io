@@ -18,6 +18,9 @@ tabs.forEach(tab => {
         tabs.forEach(tab => {
             tab.classList.remove('active');
         })
+        var local = JSON.parse(window.localStorage.getItem('ClickTab'));
+        local.clickedTab = tab;
+        window.localStorage.setItem('ClickTab', JSON.stringify(local));
         setAct(tab);
     })
 })
