@@ -1,6 +1,13 @@
 const tabs = document.querySelectorAll('[data-tab-target]');
 const tabContents = document.querySelectorAll('[data-tab-content]');
 var active;
+if(JSON.parse(window.localStorage.getItem('ClickTab')) == undefined || null){
+    const global = {
+        return: false,
+        clickedTab: "none",
+    }
+    window.localStorage.setItem('ClickTab', JSON.stringify(global));
+}
 
 //per click update
 tabs.forEach(tab => {
@@ -13,6 +20,16 @@ tabs.forEach(tab => {
         })
         setAct(tab);
     })
+})
+
+//on load, load clicked tab
+document.addEventListener("load", () => {
+    var local = JSON.parse(window.localStorage.getItem('ClickTab'));
+    if(local.return == true){
+        setAct(local.clickedTab);
+        local.return = false;
+        window.localStorage.setItem('ClickTab', JSON.stringify(local));
+    }
 })
 
 function setAct(tab) {
