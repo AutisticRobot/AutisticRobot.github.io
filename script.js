@@ -20,6 +20,7 @@ tabs.forEach(tab => {
         })
         var local = JSON.parse(window.localStorage.getItem('ClickTab'));
         local.clickedTab = tab;
+        local.return = true;
         window.localStorage.setItem('ClickTab', JSON.stringify(local));
         setAct(tab);
     })
