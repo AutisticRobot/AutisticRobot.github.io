@@ -11,6 +11,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link href="/images/favicon.ico" rel="icon">
   <script src="roboticGameEngine.js" defer></script>
+  <script src="siteNav.js" defer></script>
   <script src="gameCode.js" defer></script>
   <title>FlappyBot</title>
 </head>
@@ -20,7 +21,13 @@
   width="16" height="16">
 </div>
 <body id="body">
-  <h2><a href="/index.html">Home</a></h2>
+  <div><!--Tabs-->
+    <ul class="tabs">
+     <li data-tab-target="#home" class="tab">Home</li>
+     <li data-tab-target="#friends" class="tab">My Friends</li>
+     <li data-tab-target="#games" class="tab">Games</li>
+    </ul>
+  </div>
   <h1>FlappyBot</h1>
       <style>
         canvas{
