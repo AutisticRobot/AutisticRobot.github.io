@@ -13,7 +13,7 @@ if(window.localStorage.getItem('ClickTab') == undefined || null){
   tabs.forEach(tab => {
       tab.addEventListener('click', () => {
         var local = JSON.parse(window.localStorage.getItem('ClickTab'));
-        local.clickedTab = tab;
+        local.clickedTab = tab.getAttribute("data-tab-target");
         local.return = true;
         window.localStorage.setItem('ClickTab', JSON.stringify(local));
         console.log(tab);
