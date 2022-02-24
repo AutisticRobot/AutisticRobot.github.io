@@ -20,7 +20,7 @@ tabs.forEach(tab => {
             tab.classList.remove('active');
         })
         var local = JSON.parse(window.localStorage.getItem('ClickTab'));
-        local.clickedTab = tab.getAttribute("data-tab-target");
+        local.clickedTab = JSON.stringify(tab.getAttribute("data-tab-target"));
         local.return = true;
         window.localStorage.setItem('ClickTab', JSON.stringify(local));
         setAct(tab.getAttribute("data-tab-target"));
@@ -32,7 +32,7 @@ document.addEventListener("load", () => {
     var local = JSON.parse(window.localStorage.getItem('ClickTab'));
     if(local.return = true){
         setAct(local.clickedTab);
-        local.return = false;
+        //local.return = false;
         window.localStorage.setItem('ClickTab', JSON.stringify(local));
     }
 })
