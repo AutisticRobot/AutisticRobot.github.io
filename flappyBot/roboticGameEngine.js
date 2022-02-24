@@ -62,7 +62,7 @@ function render(id){
       render(c);
     }
   }
-  if(hitbox.prop[id] != 2){
+  if(hitbox.prop[id] != 3){
     ctx.fillStyle='black';
     ctx.fillRect(hitbox.x[id] - 1, hitbox.y[id] - 1, hitbox.sizeX[id] + 2, hitbox.sizeY[id] + 2);
   }
@@ -81,7 +81,7 @@ function render(id){
         ctx.fillStyle = "rgba(255, 255, 255, 0)";
         ctx.drawImage(img, hitbox.x[id], hitbox.y[id], hitbox.sizeX[id], hitbox.sizeY[id]);
         break;
-      case 2:
+      case 3:
         ctx.fillStyle = 'black';
         ctx.font = '50px comic-sans';
         ctx.fillText('press any key', hitbox.x[id], hitbox.y[id]);
