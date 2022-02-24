@@ -16,7 +16,7 @@ if(window.localStorage.getItem('ClickTab') == undefined || null){
         local.clickedTab = tab.getAttribute("data-tab-target");
         local.return = true;
         window.localStorage.setItem('ClickTab', JSON.stringify(local));
-        console.log(tab);
+        console.log(local.clickedTab);
         window.location.href = "/index.html";
       })
   })
