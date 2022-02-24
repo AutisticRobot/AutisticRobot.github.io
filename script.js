@@ -12,13 +12,6 @@ if(JSON.parse(window.localStorage.getItem('ClickTab')) == undefined || null){
 //per click update
 tabs.forEach(tab => {
     tab.addEventListener('click', () => {
-
-        tabContents.forEach(tabContent => {
-            tabContent.classList.remove('active');
-        })
-        tabs.forEach(tab => {
-            tab.classList.remove('active');
-        })
         var local = JSON.parse(window.localStorage.getItem('ClickTab'));
         local.clickedTab = JSON.stringify(tab.getAttribute("data-tab-target"));
         local.return = true;
@@ -28,17 +21,21 @@ tabs.forEach(tab => {
 })
 
 //on load, load clicked tab
-document.addEventListener("load", () => {
     var local = JSON.parse(window.localStorage.getItem('ClickTab'));
     if(local.return = true){
         setAct(local.clickedTab);
         //local.return = false;
         window.localStorage.setItem('ClickTab', JSON.stringify(local));
     }
-})
 
 function setAct(tabAt) {
     var tab;
+    tabContents.forEach(tabContent => {
+        tabContent.classList.remove('active');
+    })
+    tabs.forEach(tab => {
+        tab.classList.remove('active');
+    })
     tabs.forEach(test => {
         if (JSON.stringify(test.getAttribute("data-tab-target")) == tabAt){
             tab = test;
