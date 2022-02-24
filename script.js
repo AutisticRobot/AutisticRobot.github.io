@@ -40,7 +40,7 @@ document.addEventListener("load", () => {
 function setAct(tabAt) {
     var tab;
     tabs.forEach(test => {
-        if (test.getAttribute("data-tab-target") == tabAt){
+        if (JSON.stringify(test.getAttribute("data-tab-target")) == tabAt){
             tab = test;
         }
     })
