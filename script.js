@@ -30,7 +30,7 @@ tabs.forEach(tab => {
 //on load, load clicked tab
 document.addEventListener("load", () => {
     var local = JSON.parse(window.localStorage.getItem('ClickTab'));
-    if(local.return == true){
+    if(local.return = true){
         setAct(local.clickedTab);
         local.return = false;
         window.localStorage.setItem('ClickTab', JSON.stringify(local));
