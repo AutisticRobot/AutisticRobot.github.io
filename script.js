@@ -38,7 +38,12 @@ document.addEventListener("load", () => {
 })
 
 function setAct(tabAt) {
-    var tab = document.querySelectorAll('[data-tab-target=tabAt]');
+    var tab;
+    tabs.forEach(test => {
+        if (test.getAttribute("data-tab-target") == tabAt){
+            tab = test;
+        }
+    })
     const target = document.querySelector(tab.dataset.tabTarget);
     tab.classList.add('active');
     target.classList.add('active');
