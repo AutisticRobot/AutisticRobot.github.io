@@ -1,12 +1,15 @@
 const tabs = document.querySelectorAll('[data-tab-target]');
 const tabContents = document.querySelectorAll('[data-tab-content]');
 var active;
+var local = JSON.parse(window.localStorage.getItem('ClickTab'));
+if(local.return == false){
 if(JSON.parse(window.localStorage.getItem('ClickTab')) == undefined || null){
     const global = {
         return: false,
-        clickedTab: "none",
+        clickedTab: "#home",
     }
     window.localStorage.setItem('ClickTab', JSON.stringify(global));
+}
 }
 
 //per click update
