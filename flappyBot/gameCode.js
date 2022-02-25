@@ -51,7 +51,6 @@ function cHitCheck(hitID2){
 }
 
 function Start(){
-  createBox(50, 200, -5, 0, 0, 0, 3, 2, null, false, false, true);
   game = true;
   hidden = -3;
   score = 0;

@@ -84,15 +84,17 @@ function render(id){
       case 3:
         ctx.fillStyle = 'black';
         ctx.font = '50px comic-sans';
-        ctx.fillText('press any key', hitbox.x[id], hitbox.y[id]);
+        ctx.fillText("press any key", hitbox.x[id], hitbox.y[id]);
 
         break
     }
   } else {
     ctx.fillStyle = hitbox.color[id];
   }
-  ctx.beginPath();
-  ctx.fillRect(hitbox.x[id], hitbox.y[id], hitbox.sizeX[id], hitbox.sizeY[id]);
+  if(hitbox.prop[id] != 1 || 3){
+    ctx.beginPath();
+    ctx.fillRect(hitbox.x[id], hitbox.y[id], hitbox.sizeX[id], hitbox.sizeY[id]);
+  }
  
 }
 
