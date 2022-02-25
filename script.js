@@ -27,7 +27,7 @@ tabs.forEach(tab => {
     var local = JSON.parse(window.localStorage.getItem('ClickTab'));
     if(local.return = true){
         setAct(local.clickedTab);
-        //local.return = false;
+        local.return = false;
         window.localStorage.setItem('ClickTab', JSON.stringify(local));
     }
 
