@@ -12,7 +12,6 @@ if(window.localStorage.getItem('FlappyBot') !== null){
   hiscore = JSON.parse(window.localStorage.getItem('FlappyBot'));
 }
 
-createBox(50, 200, -5, 0, 5, 5, 3, 2, 0, false, false, true);
 createBox(100, 300, 0, 0, 64, 64, 1, 2, 0, true, false, false);
 for(var cloud=1175; cloud >= -64; cloud -= 50){
   cloudY = Math.random() * 600;
@@ -102,6 +101,7 @@ body.addEventListener("keydown", e=>{
 
 
 
+createBox(50, 200, -5, 0, 0, 0, 3, 2, 0, false, false, true);
 
 // game loop----------------------------------------------------------------------------------------------------------------------------------------------
 function update() {
