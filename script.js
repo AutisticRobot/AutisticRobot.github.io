@@ -6,7 +6,7 @@ if(local == undefined || null || local.clickedTab == undefined || null){
 
     const global = {
         return: false,
-        clickedTab: "#home",
+        clickedTab: JSON.stringify(tabs[0].getAttribute("data-tab-target")),
     }
     window.localStorage.setItem('ClickTab', JSON.stringify(global));
 }
@@ -27,19 +27,7 @@ if(local.return == true){
     local.return = false;
     window.localStorage.setItem('ClickTab', JSON.stringify(local));
 }else{
-    tabContents.forEach(tabContent => {
-        tabContent.classList.remove('active');
-    })
-    tabs.forEach(tab => {
-        tab.classList.remove('active');
-    })
-    tabs.forEach(test => {
-        if (test == tabs[0]){
-            const target = document.querySelector(test.dataset.tabTarget);
-            test.classList.add('active');
-            target.classList.add('active');
-        }
-    })
+    setAct(JSON.stringify(tabs[0].getAttribute("data-tab-target")));
 }
 
 function setAct(tabAt) {
