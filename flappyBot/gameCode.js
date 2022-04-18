@@ -16,10 +16,10 @@ createBox(100, 300, 0, 0, 64, 64, 1, 2, 0, true, false, false);
 for(var cloud=1175; cloud >= -64; cloud -= 50){
   cloudY = Math.random() * 600;
   cloudS = (Math.random() * 2) - 4;
-  createBox(cloud, cloudY, cloudS, 0, 64, 32, 2, 0, 'white', false, false, true);
+  createBox(cloud, cloudY, cloudS, 0, 64, 32, 2, 0, 0, false, false, true);
   cloudY = Math.random() * 600;
   cloudS = (Math.random() * 2) - 4;
-  createBox(cloud, cloudY, cloudS, 0, 64, 32, 2, 0, 'white', false, false, true);
+  createBox(cloud, cloudY, cloudS, 0, 64, 32, 2, 0, 0, false, false, true);
   sC = true;
 }
 
