@@ -5,6 +5,7 @@ canvas.focus();
 const width = canvas.width;
 const height = canvas.height;
 const img = document.getElementById('face');
+const cloud = document.getElementById('cloud');
 body.addEventListener("keydown", event=>{
   if(event.keyCode != 17 && 16){
     keyAdd(event);
@@ -62,7 +63,7 @@ function render(id){
       render(c);
     }
   }
-  if(hitbox.prop[id] != 3 || 2){
+  if(hitbox.prop[id] != 3 || 5){
     ctx.fillStyle='black';
     ctx.fillRect(hitbox.x[id] - 1, hitbox.y[id] - 1, hitbox.sizeX[id] + 2, hitbox.sizeY[id] + 2);
   }
@@ -87,15 +88,15 @@ function render(id){
         ctx.fillText("press any key", hitbox.x[id], hitbox.y[id]);
 
         break
-      case 2:
+      case 5:
         ctx.fillStyle = "rgba(255, 255, 255, 0)";
-        ctx.drawImage("assets/cloud.png", hitbox.x[id], hitbox.y[id], hitbox.sizeX[id], hitbox.sizeY[id]);
+        ctx.drawImage(cloud, hitbox.x[id], hitbox.y[id], hitbox.sizeX[id], hitbox.sizeY[id]);
         break;
     }
   } else {
     ctx.fillStyle = hitbox.color[id];
   }
-  if(hitbox.prop[id] != 1 || 2 || 3){
+  if(hitbox.prop[id] != 1 || 5 || 3){
     ctx.beginPath();
     ctx.fillRect(hitbox.x[id], hitbox.y[id], hitbox.sizeX[id], hitbox.sizeY[id]);
   }
