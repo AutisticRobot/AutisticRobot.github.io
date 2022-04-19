@@ -63,7 +63,7 @@ function render(id){
       render(c);
     }
   }
-  if(hitbox.prop[id] != 3 || 5){
+  if(hitbox.prop[id] != 5 || 3){
     ctx.fillStyle='black';
     ctx.fillRect(hitbox.x[id] - 1, hitbox.y[id] - 1, hitbox.sizeX[id] + 2, hitbox.sizeY[id] + 2);
   }
@@ -89,14 +89,14 @@ function render(id){
 
         break
       case 5:
-        ctx.fillStyle = "rgba(255, 255, 255, 255)";
+        ctx.fillStyle = "rgba(255, 255, 255, 0)";
         ctx.drawImage(cloudpng, hitbox.x[id], hitbox.y[id], hitbox.sizeX[id], hitbox.sizeY[id]);
         break;
     }
   } else {
     ctx.fillStyle = hitbox.color[id];
   }
-  if(hitbox.prop[id] != 1 || 3){
+  if(hitbox.prop[id] != 1 || 3 || 5){
     ctx.beginPath();
     ctx.fillRect(hitbox.x[id], hitbox.y[id], hitbox.sizeX[id], hitbox.sizeY[id]);
   }
