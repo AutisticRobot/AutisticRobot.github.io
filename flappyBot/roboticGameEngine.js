@@ -5,7 +5,7 @@ canvas.focus();
 const width = canvas.width;
 const height = canvas.height;
 const img = document.getElementById('face');
-const cloud = document.getElementById('cloud');
+//const cloud = document.getElementById('cloud');
 body.addEventListener("keydown", event=>{
   if(event.keyCode != 17 && 16){
     keyAdd(event);
@@ -89,14 +89,14 @@ function render(id){
 
         break
       case 5:
-        ctx.fillStyle = "rgba(255, 255, 255, 0)";
-        ctx.drawImage(cloud, hitbox.x[id], hitbox.y[id], hitbox.sizeX[id], hitbox.sizeY[id]);
+        ctx.fillStyle = "rgba(255, 255, 255, 255)";
+        //ctx.drawImage(cloud, hitbox.x[id], hitbox.y[id], hitbox.sizeX[id], hitbox.sizeY[id]);
         break;
     }
   } else {
     ctx.fillStyle = hitbox.color[id];
   }
-  if(hitbox.prop[id] != 1 || 5 || 3){
+  if(hitbox.prop[id] != 1 || 3){
     ctx.beginPath();
     ctx.fillRect(hitbox.x[id], hitbox.y[id], hitbox.sizeX[id], hitbox.sizeY[id]);
   }
