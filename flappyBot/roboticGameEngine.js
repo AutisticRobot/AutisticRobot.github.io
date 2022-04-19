@@ -5,6 +5,7 @@ canvas.focus();
 const width = canvas.width;
 const height = canvas.height;
 const img = document.getElementById('face');
+const cloudpng = document.getElementById('cloudpng');
 body.addEventListener("keydown", event=>{
   if(event.keyCode != 17 && 16){
     keyAdd(event);
@@ -57,15 +58,6 @@ function updateCursorPos(event){
 
 //square render
 function render(id){
-  if(id == "all"){
-    for(var c=0; c < hitbox.tag.length; c++){
-      render(c);
-    }
-  }
-  if(hitbox.prop[id] != 3){
-    ctx.fillStyle='black';
-    ctx.fillRect(hitbox.x[id] - 1, hitbox.y[id] - 1, hitbox.sizeX[id] + 2, hitbox.sizeY[id] + 2);
-  }
 
   hitbox.farX[id] = hitbox.x[id] + hitbox.sizeX[id];
   hitbox.farY[id] = hitbox.y[id] + hitbox.sizeY[id];
@@ -73,11 +65,19 @@ function render(id){
     switch(hitbox.prop[id]){
       default:
         ctx.fillStyle = "#424242";
+        if(hitbox.prop[id] != 5 || 3){
+          ctx.fillStyle='black';
+          ctx.fillRect(hitbox.x[id] - 1, hitbox.y[id] - 1, hitbox.sizeX[id] + 2, hitbox.sizeY[id] + 2);
+        }
         break;
       case 0:
         ctx.fillStyle = "black";
         break;
       case 1:
+        if(hitbox.prop[id] != 5 || 3){
+          ctx.fillStyle='black';
+          ctx.fillRect(hitbox.x[id] - 1, hitbox.y[id] - 1, hitbox.sizeX[id] + 2, hitbox.sizeY[id] + 2);
+        }
         ctx.fillStyle = "rgba(255, 255, 255, 0)";
         ctx.drawImage(img, hitbox.x[id], hitbox.y[id], hitbox.sizeX[id], hitbox.sizeY[id]);
         break;
@@ -87,11 +87,19 @@ function render(id){
         ctx.fillText("press any key", hitbox.x[id], hitbox.y[id]);
 
         break
+      case 5:
+        ctx.fillStyle = "rgba(255, 255, 255, 0)";
+        ctx.drawImage(cloudpng, hitbox.x[id], hitbox.y[id], hitbox.sizeX[id], hitbox.sizeY[id]);
+        break;
     }
   } else {
+    if(hitbox.prop[id] != 5 || 3){
+      ctx.fillStyle='black';
+      ctx.fillRect(hitbox.x[id] - 1, hitbox.y[id] - 1, hitbox.sizeX[id] + 2, hitbox.sizeY[id] + 2);
+    }
     ctx.fillStyle = hitbox.color[id];
   }
-  if(hitbox.prop[id] != 1 || 3){
+  if(hitbox.prop[id] != 1 || 3 || 5){
     ctx.beginPath();
     ctx.fillRect(hitbox.x[id], hitbox.y[id], hitbox.sizeX[id], hitbox.sizeY[id]);
   }
