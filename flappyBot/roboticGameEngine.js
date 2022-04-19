@@ -89,7 +89,7 @@ function render(id){
 
         break
       case 5:
-        ctx.fillStyle = "rgba(255, 255, 255, 0)";
+        ctx.fillStyle = "rgba(255, 255, 255, 255)";
         ctx.drawImage(cloudpng, hitbox.x[id], hitbox.y[id], hitbox.sizeX[id], hitbox.sizeY[id]);
         break;
     }
