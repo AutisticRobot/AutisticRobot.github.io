@@ -58,15 +58,12 @@ function updateCursorPos(event){
 
 //square render
 function render(id){
-  if(id == "all"){
-    for(var c=0; c < hitbox.tag.length; c++){
-      render(c);
-    }
-  }
+  /*
   if(hitbox.prop[id] != 5 || 3){
     ctx.fillStyle='black';
     ctx.fillRect(hitbox.x[id] - 1, hitbox.y[id] - 1, hitbox.sizeX[id] + 2, hitbox.sizeY[id] + 2);
   }
+  */
 
   hitbox.farX[id] = hitbox.x[id] + hitbox.sizeX[id];
   hitbox.farY[id] = hitbox.y[id] + hitbox.sizeY[id];
