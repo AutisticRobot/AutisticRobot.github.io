@@ -5,7 +5,7 @@ canvas.focus();
 const width = canvas.width;
 const height = canvas.height;
 const img = document.getElementById('face');
-//const cloud = document.getElementById('cloud');
+const cloud = document.getElementById('cloud');
 body.addEventListener("keydown", event=>{
   if(event.keyCode != 17 && 16){
     keyAdd(event);
