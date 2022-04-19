@@ -15,9 +15,11 @@ if(window.localStorage.getItem('FlappyBot') !== null){
 createBox(100, 300, 0, 0, 64, 64, 1, 2, 0, true, false, false);
 for(var cloud=1175; cloud >= -64; cloud -= 50){
   cloudY = Math.random() * 600;
+  cloudY -= 64;
   cloudS = (Math.random() * 2) - 4;
   createBox(cloud, cloudY, cloudS, 0, 128, 64, 5, 0, 0, false, false, true);
   cloudY = Math.random() * 600;
+  cloudY -= 64;
   cloudS = (Math.random() * 2) - 4;
   createBox(cloud, cloudY, cloudS, 0, 128, 64, 5, 0, 0, false, false, true);
   sC = true;
@@ -81,9 +83,11 @@ function Start(){
   if(sC == false){
     for(var cloud=1175; cloud >= -64; cloud -= 50){
       cloudY = Math.random() * 600;
+      cloudY -= 64;
       cloudS = (Math.random() * 2) - 4;
       createBox(cloud, cloudY, cloudS, 0, 128, 64, 5, 0, 0, false, false, true);
       cloudY = Math.random() * 600;
+      cloudY -= 64;
       cloudS = (Math.random() * 2) - 4;
       createBox(cloud, cloudY, cloudS, 0, 128, 64, 5, 0, 0, false, false, true);
     }
@@ -149,9 +153,11 @@ function update() {
     }
     if(time % 20 == 10){//create cloud
       cloudY = Math.random() * 600;
+      cloudY -= 64;
       cloudS = (Math.random() * 2) - 4;
       createBox(width, cloudY, cloudS, 0, 128, 64, 5, 0, 0, false, false, true);
       cloudY = Math.random() * 600;
+      cloudY -= 64;
       cloudS = (Math.random() * 2) - 4;
       createBox(width, cloudY, cloudS, 0, 128, 64, 5, 0, 0, false, false, true);
     }
