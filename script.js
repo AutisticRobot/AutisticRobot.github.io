@@ -1,31 +1,21 @@
 const tabs = document.querySelectorAll('[data-tab-target]');
 const tabContents = document.querySelectorAll('[data-tab-content]');
+const params = new URLSearchParams(window.location.search);
 var active;
-var local = JSON.parse(window.localStorage.getItem('ClickTab'));
-if(local == undefined || null || local.clickedTab == undefined || null){
-
-    const global = {
-        return: false,
-        clickedTab: JSON.stringify(tabs[0].getAttribute("data-tab-target")),
-    }
-    window.localStorage.setItem('ClickTab', JSON.stringify(global));
-}
+var local = params.get(local);
 
 //per click update
 tabs.forEach(tab => {
     tab.addEventListener('click', () => {
-        var local = JSON.parse(window.localStorage.getItem('ClickTab'));
-        local.clickedTab = JSON.stringify(tab.getAttribute("data-tab-target"));
-        window.localStorage.setItem('ClickTab', JSON.stringify(local));
-        setAct(local.clickedTab);
+        let URL=window.location.origin + window.location.pathname + "?local=" + JSON.stringify(tab.getAttribute("data-tab-target"));
+
+        window.location.assign(URL);
     })
 })
 
 //on load, load clicked tab
-if(local.return == true){
-    setAct(local.clickedTab);
-    local.return = false;
-    window.localStorage.setItem('ClickTab', JSON.stringify(local));
+if(params.has(local)){
+    setAct(local);
 }else{
     setAct(JSON.stringify(tabs[0].getAttribute("data-tab-target")));
 }
