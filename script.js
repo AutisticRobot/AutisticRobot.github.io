@@ -2,12 +2,19 @@ const tabs = document.querySelectorAll('[data-tab-target]');
 const tabContents = document.querySelectorAll('[data-tab-content]');
 const params = new URLSearchParams(window.location.search);
 var active;
-var local = JSON.stringify(params.get("local"));
+var local = params.get("local");
+var clicked;
 
 //per click update
 tabs.forEach(tab => {
     tab.addEventListener('click', () => {
-        let URL=window.location.origin + window.location.pathname + "?local=" + JSON.stringify(tab.getAttribute("data-tab-target"));
+
+        for(var t = 0; t < tabs.length; t++){
+            if(tab == tabs[t]){
+                clicked = t;
+            }
+        }
+        let URL=window.location.origin + window.location.pathname + "?local=" + clicked;
 
         window.location.assign(URL);
     })
@@ -17,7 +24,7 @@ tabs.forEach(tab => {
 if(params.has("local")){
     setAct(local);
 }else{
-    setAct(JSON.stringify(tabs[0].getAttribute("data-tab-target")));
+    setAct(0);
 }
 
 function setAct(tabAt) {
@@ -28,11 +35,8 @@ function setAct(tabAt) {
     tabs.forEach(tab => {
         tab.classList.remove('active');
     })
-    tabs.forEach(test => {
-        if (JSON.stringify(test.getAttribute("data-tab-target")) == tabAt){
-            const target = document.querySelector(test.dataset.tabTarget);
-            test.classList.add('active');
-            target.classList.add('active');
-        }
-    })
+    const tab = tabs[tabAt];
+    const target = document.querySelector(tab.dataset.tabTarget);
+    tab.classList.add('active');
+    target.classList.add('active');
 }
