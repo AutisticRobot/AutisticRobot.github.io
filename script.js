@@ -2,7 +2,7 @@ const tabs = document.querySelectorAll('[data-tab-target]');
 const tabContents = document.querySelectorAll('[data-tab-content]');
 const params = new URLSearchParams(window.location.search);
 var active;
-var local = params.get("local");
+var local = JSON.stringify(params.get("local"));
 
 //per click update
 tabs.forEach(tab => {
