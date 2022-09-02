@@ -3,11 +3,22 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | untitled web game</title>
+  <script src="/siteNav.js" defer></script>
+  <link href="/styles.css" rel="stylesheet">
+    <title>Unity WebGL Player | Block Box</title>
   </head>
   <body style="text-align: center">
-    <canvas id="unity-canvas" width=960 height=600 style="width: 960px; height: 600px; background: #231F20"></canvas>
-    <script src="Build/BlockBox.loader.js"></script>
+  <div><!--Tabs-->
+    <ul class="tabs">
+     <li data-tab-target="#home" class="tab">Home</li>
+     <li data-tab-target="#friends" class="tab">My Friends</li>
+     <li data-tab-target="#games" class="tab">Games</li>
+     <li data-tab-target="#resume" class="tab">My Resume</li>
+     <li data-tab-target="#rge" class="tab">R.G.E.</li>
+    </ul>
+  </div>
+    <canvas id="unity-canvas" width=960 height=600 style="width: 1000px; height: 600px; background: #231F20; margin-top:  32px;"></canvas>
+    <script src="Build/BlockBox_Final.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
@@ -18,12 +29,12 @@
       }
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/BlockBox.data",
-        frameworkUrl: "Build/BlockBox.framework.js",
-        codeUrl: "Build/BlockBox.wasm",
+        dataUrl: "Build/BlockBox_Final.data",
+        frameworkUrl: "Build/BlockBox_Final.framework.js",
+        codeUrl: "Build/BlockBox_Final.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
-        productName: "untitled web game",
+        productName: "Block Box",
         productVersion: "1.0",
         // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.

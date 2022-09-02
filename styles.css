@@ -53,3 +53,44 @@ footer{
 img.pixel{
     image-rendering: pixelated;
 }
+/*Game profile*/
+
+      div.games div img {
+        margin-top: 16px;
+        margin-bottom: -16px;
+        margin-right: 16px;
+        padding: 16px;
+        border-radius: 32px;;
+        border-top: 3px solid white;
+        border-bottom: 3px solid white;
+        height: 128px;
+        width: 256px;
+      }
+
+      div.games div {
+        margin-bottom: 64px;
+      }
+
+      div.games div a {
+        color: white; text-decoration: none;
+      }
+
+      div.gtest div h3 {
+        border: 1px solid wheat;
+      }
+
+/*Friends icons*/
+      .quote{
+       margin-bottom: 90px; 
+      }
+
+      i{
+        font-weight: bold;
+      }
+
+      .profile {
+        width: 128px;
+        border-radius: 32px;
+        float: left;
+        margin-right: 16px;
+      }
