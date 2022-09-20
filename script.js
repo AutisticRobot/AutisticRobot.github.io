@@ -1,33 +1,30 @@
 const tabs = document.querySelectorAll('[data-tab-target]');
 const tabContents = document.querySelectorAll('[data-tab-content]');
+const params = new URLSearchParams(window.location.search);
 var active;
-var local = JSON.parse(window.localStorage.getItem('ClickTab'));
-if(local == undefined || null || local.clickedTab == undefined || null){
-
-    const global = {
-        return: false,
-        clickedTab: JSON.stringify(tabs[0].getAttribute("data-tab-target")),
-    }
-    window.localStorage.setItem('ClickTab', JSON.stringify(global));
-}
+var local = params.get("local");
+var clicked;
 
 //per click update
 tabs.forEach(tab => {
     tab.addEventListener('click', () => {
-        var local = JSON.parse(window.localStorage.getItem('ClickTab'));
-        local.clickedTab = JSON.stringify(tab.getAttribute("data-tab-target"));
-        window.localStorage.setItem('ClickTab', JSON.stringify(local));
-        setAct(local.clickedTab);
+
+        for(var t = 0; t < tabs.length; t++){
+            if(tab == tabs[t]){
+                clicked = t;
+            }
+        }
+        let URL=window.location.origin + window.location.pathname + "?local=" + clicked;
+
+        window.location.assign(URL);
     })
 })
 
 //on load, load clicked tab
-if(local.return == true){
-    setAct(local.clickedTab);
-    local.return = false;
-    window.localStorage.setItem('ClickTab', JSON.stringify(local));
+if(params.has("local")){
+    setAct(local);
 }else{
-    setAct(JSON.stringify(tabs[0].getAttribute("data-tab-target")));
+    setAct(0);
 }
 
 function setAct(tabAt) {
@@ -38,11 +35,8 @@ function setAct(tabAt) {
     tabs.forEach(tab => {
         tab.classList.remove('active');
     })
-    tabs.forEach(test => {
-        if (JSON.stringify(test.getAttribute("data-tab-target")) == tabAt){
-            const target = document.querySelector(test.dataset.tabTarget);
-            test.classList.add('active');
-            target.classList.add('active');
-        }
-    })
+    const tab = tabs[tabAt];
+    const target = document.querySelector(tab.dataset.tabTarget);
+    tab.classList.add('active');
+    target.classList.add('active');
 }
