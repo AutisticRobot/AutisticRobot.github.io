@@ -79,18 +79,31 @@ img.pixel{
         border: 1px solid wheat;
       }
 
-/*Friends icons*/
-      .quote{
-       margin-bottom: 90px; 
-      }
+/*icons*/
+.quote{
+ margin-bottom: 90px; 
+}
 
-      i{
-        font-weight: bold;
-      }
+i{
+  font-weight: bold;
+}
 
-      .profile {
-        width: 128px;
-        border-radius: 32px;
-        float: left;
-        margin-right: 16px;
-      }
+.profile {
+  width: 128px;
+  border-radius: 32px;
+  float: left;
+  margin-right: 16px;
+}
+
+/*Blog*/
+
+div.post{
+  background-color: #2a2a2a;
+  padding: 16px;
+  padding-left: 32px;
+  border-radius: 32px;
+  margin: 64px;
+  margin-left: 64px;
+  margin-right: 256px;
+  
+}
