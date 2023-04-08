@@ -14,3 +14,13 @@ const tabs = document.querySelectorAll('[data-tab-target]');
     })
   })
   
+class SiteNav extends HTMLElement 
+{
+    constructor()
+    {
+        super()
+        this.innerHTML = "Hello"
+    }
+}
+
+customElements.define("site-nav", SiteNav)
