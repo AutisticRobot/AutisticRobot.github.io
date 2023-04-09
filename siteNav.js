@@ -1,4 +1,24 @@
-const tabs = document.querySelectorAll('[data-tab-target]');
+class siteNav extends HTMLElement 
+{
+    constructor()
+    {
+        super()
+        this.innerHTML =
+        `
+        <nav style="padding-top: 16px;">
+            <ul class="tabs">
+                <li data-tab-target="#home" class="tab">Home</li>
+                <li data-tab-target="#blog" class="tab">Blog</li>
+                <li data-tab-target="#games" class="tab">Games</li>
+            </ul>
+        </nav>
+        `
+    }
+}
+
+customElements.define("site-nav", siteNav)//NEEDS to appear BEFORE navigation logic or it wont be detected.
+
+const tabs = document.querySelectorAll(".tabs");//query select first element with class "tabs"
  //per click update
   tabs.forEach(tab => {
       tab.addEventListener('click', () => {
@@ -14,13 +34,3 @@ const tabs = document.querySelectorAll('[data-tab-target]');
     })
   })
   
-class SiteNav extends HTMLElement 
-{
-    constructor()
-    {
-        super()
-        this.innerHTML = "Hello"
-    }
-}
-
-customElements.define("site-nav", SiteNav)
