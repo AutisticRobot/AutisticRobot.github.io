@@ -18,19 +18,24 @@ class siteNav extends HTMLElement
 
 customElements.define("site-nav", siteNav)//NEEDS to appear BEFORE navigation logic or it wont be detected.
 
-const tabs = document.querySelectorAll(".tabs");//query select first element with class "tabs"
+const tabs = document.querySelectorAll(".tabs")[0].childNodes;//query select first element with class "tabs"
  //per click update
   tabs.forEach(tab => {
+    if(tab.classList != undefined)//for some reason every even child starting with 0 is just a line break;
+    {
       tab.addEventListener('click', () => {
 
-        for(var t = 0; t < tabs.length; t++){
+        for(var t = 1; t < tabs.length; t += 2){
             if(tab == tabs[t]){
                 clicked = t;
+                console.log(clicked);
+                //clicked = (2 * clicked) + 1;
             }
         }
         let URL=window.location.origin + "/index.html" + "?local=" + clicked;
 
         window.location.assign(URL);
     })
+}
   })
   
