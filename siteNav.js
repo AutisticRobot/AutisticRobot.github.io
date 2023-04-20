@@ -27,7 +27,7 @@ class footar extends HTMLElement
         `
         <footer>
         <div>
-            <p>Copyright 2021-2023 Tyler M. Kormann</p>
+            <p>Copyright 2022-2023 Tyler M. Kormann</p>
           <p>Hosted on <a href="https://github.com/AutisticRobot/AutisticRobot.github.io">Github Pages</a></p>
         </div>
       </footer>
