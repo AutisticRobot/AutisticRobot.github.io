@@ -18,6 +18,25 @@ class siteNav extends HTMLElement
 
 customElements.define("site-nav", siteNav)//NEEDS to appear BEFORE navigation logic or it wont be detected.
 
+class footar extends HTMLElement 
+{
+    constructor()
+    {
+        super()
+        this.innerHTML =
+        `
+        <footer>
+        <div>
+            <p>Copyright 2021-2023 Tyler M. Kormann</p>
+          <p>Hosted on <a href="https://github.com/AutisticRobot/AutisticRobot.github.io">Github Pages</a></p>
+        </div>
+      </footer>
+        `
+        
+    }
+}
+customElements.define("footer-nav", footar)//these also need to show up AFTER class declaration.
+
 const tabs = document.querySelectorAll(".tabs")[0].childNodes;//query select first element with class "tabs"
  //per click update
   tabs.forEach(tab => {
