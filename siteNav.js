@@ -8,7 +8,7 @@ class siteNav extends HTMLElement
         <nav style="padding-top: 16px;">
             <ul class="tabs">
                 <li data-tab-target="#home" class="tab">Home</li>
-                <li data-tab-target="#blog" class="tab">Blog</li>
+                <li data-tab-target="#blog" class="tab">Devlog</li>
                 <li data-tab-target="#games" class="tab">Games</li>
             </ul>
         </nav>
